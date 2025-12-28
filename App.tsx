@@ -52,7 +52,7 @@ const App: React.FC = () => {
     }
   };
 
-  const articleContent = `n un caluroso día de enero de 1953, mientras el mundo celebraba el comienzo de un nuevo año, San Miguel de Tucumán recibía a quien se convertiría en el corazón de nuestra familia. Marta llegó a este mundo trayendo consigo la promesa de amor incondicional que hoy, setenta y tres años después, sigue cumpliendo con creces. Cada arruga es un mapa de risas compartidas, cada cana un testimonio de sabiduría acumulada. Hoy, toda la Argentina se detiene para celebrar a esta mujer extraordinaria.`;
+  const articleContent = `n un caluroso día de enero de 1953, mientras el mundo celebraba el comienzo de un nuevo año, San Miguel de Tucumán recibía a quien se convertiría en el corazón de nuestra familia. Marta llegó a este mundo trayendo consigo la promesa de amor incondicional que hoy, setenta y tres años después, sigue cumpliendo con creces. Cada día vivido es una página de historias compartidas, cada momento un legado de amor y dedicación inquebrantable. Hoy, toda la Argentina se detiene para celebrar a esta mujer extraordinaria.`;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 bg-paper-medium/60 shadow-2xl my-4 md:my-10 border border-ink-lighter/60 relative paper-texture">
@@ -206,7 +206,6 @@ const App: React.FC = () => {
               <div className="text-center border-t-2 border-ink-dark pt-4">
                 <h4 className="headline-font text-2xl font-black uppercase mb-1">Ferez Gettar</h4>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-ink-light mb-2">El Patriarca</p>
-                <p className="italic font-serif text-sm leading-relaxed">"Arquitecto de sueños y pilar inquebrantable de la familia"</p>
               </div>
             </div>
 
@@ -230,7 +229,6 @@ const App: React.FC = () => {
               <div className="text-center border-t-2 border-ink-dark pt-4">
                 <h4 className="headline-font text-2xl font-black uppercase mb-1">Ana Frasca</h4>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-ink-light mb-2">La Matriarca</p>
-                <p className="italic font-serif text-sm leading-relaxed">"Manantial de ternura y sabiduría eterna"</p>
               </div>
             </div>
           </div>
@@ -267,11 +265,11 @@ const App: React.FC = () => {
                 </p>
                 <div className="bg-paper-medium/60 p-5 border-l-4 border-ink-dark italic shadow-sm">
                   <p className="mb-3">
-                    Brillan hoy con luz presente <span className="font-bold headline-font text-lg md:text-xl not-italic border-b-2 border-ink-dark">Chacho, Lili y Gringo</span>, quienes junto a nuestra querida cumpleañera <span className="font-bold not-italic">Marta Gettar</span>, custodian la risa y el legado de unión familiar.
+                    Brillan hoy con luz presente <span className="font-bold headline-font text-lg md:text-xl not-italic border-b-2 border-ink-dark">Chacho, Lili y Gringo</span>, quienes junto a nuestra querida cumpleañera <span className="font-bold not-italic">Marta E Gettar</span>, custodian la risa y el legado de unión familiar.
                   </p>
                   <div className="border-t-2 border-dashed border-ink-dark/30 pt-3 mt-3">
                     <p className="text-ink-medium text-sm">
-                      Y en el susurro del viento, un recordatorio eterno para <span className="headline-font font-bold not-italic text-base">Gustavo y Ana María</span>, cuyas almas tejen la red invisible que sostiene nuestra historia y guía nuestros pasos.
+                      Y entre risas y anécdotas, mantenemos vivo el recuerdo alegre de <span className="headline-font font-bold not-italic text-base">Gustavo y Ana María</span>, presentes en cada historia compartida y en el espíritu festivo que caracteriza a esta familia.
                     </p>
                   </div>
                 </div>
@@ -326,7 +324,7 @@ const App: React.FC = () => {
                   Quipi
                 </h4>
                 <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
-                  Tradición Tucumana
+                  Tradición en eventos
                 </p>
               </div>
 
@@ -356,7 +354,7 @@ const App: React.FC = () => {
                   Fideos al Horno
                 </h4>
                 <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
-                  Clásico Dominical
+                  Clásico Infaltable
                 </p>
               </div>
 
@@ -376,7 +374,7 @@ const App: React.FC = () => {
                   Ensalada de Trigo
                 </h4>
                 <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
-                  Frescura Nutritiva
+                  Acompañamiento Inconfundible
                 </p>
               </div>
 
@@ -386,7 +384,7 @@ const App: React.FC = () => {
             <div className="mt-10 text-center max-w-2xl mx-auto border-t-2 border-ink-dark pt-6">
               <p className="font-serif text-sm italic text-ink-medium leading-relaxed">
                 <span className="font-bold not-italic text-base">Nota del Editor:</span> Se ruega a los lectores no intentar replicar
-                estas recetas sin la supervisión directa de la chef Marta. Los intentos previos han resultado
+                estas recetas sin la supervisión directa de la chef Martuli. Los intentos previos han resultado
                 en aproximaciones dignas, pero jamás en el sabor exacto del original.
               </p>
             </div>
@@ -438,7 +436,7 @@ const App: React.FC = () => {
                       <p className="text-justify">
                         <span className="text-5xl font-black float-left mr-3 leading-[0.7] mt-1">E</span>
                         n un descubrimiento que ha dejado atónitos a los neurocientíficos de tres continentes,
-                        la señora Marta Gettar ha demostrado poseer una capacidad cerebral que excede en
+                        la señora Marta E Gettar ha demostrado poseer una capacidad cerebral que excede en
                         <span className="font-bold"> 47.000% </span>
                         las facultades de memoria humana promedio.
                       </p>
@@ -627,20 +625,6 @@ const App: React.FC = () => {
           </div>
         </section> */}
 
-        {/* Fe de Erratas - Tono humorístico */}
-        <div className="max-w-2xl mx-auto border-4 border-double border-ink-dark p-5 my-12 text-center bg-paper-light shadow-md">
-          <h5 className="font-bold uppercase text-xs mb-2 border-b-2 border-ink-dark pb-1 inline-block">Fe de Erratas</h5>
-          <p className="text-sm font-serif leading-relaxed mt-3">
-            La Redacción se disculpa por el error de cálculo en la nota principal. Subestimamos gravemente la magnitud del amor generado por esta mujer.
-            <span className="font-bold"> No son 73 años, son 73 toneladas de cariño puro</span> derramadas sobre todos nosotros.
-          </p>
-        </div>
-
-        {/* Divider */}
-        <div className="flex justify-center my-10">
-          <OrnamentDivider width={250} height={24} className="text-ink-light" />
-        </div>
-
         {/* Mensaje Final */}
         <section className="my-16 p-8 md:p-12 border-8 border-double border-ink-dark bg-gradient-to-b from-white/50 to-[#faf7f0] text-center shadow-2xl">
           <div className="mb-6 flex justify-center">
@@ -672,6 +656,20 @@ const App: React.FC = () => {
             <HeartIcon width={48} height={48} className="text-ink-medium" />
           </div>
         </section>
+
+        {/* Divider */}
+        <div className="flex justify-center my-10">
+          <OrnamentDivider width={200} height={24} className="text-ink-light" />
+        </div>
+
+        {/* Fe de Erratas - Tono humorístico */}
+        <div className="max-w-2xl mx-auto border-4 border-double border-ink-dark p-5 my-12 text-center bg-paper-light shadow-md">
+          <h5 className="font-bold uppercase text-xs mb-2 border-b-2 border-ink-dark pb-1 inline-block">Fe de Erratas</h5>
+          <p className="text-sm font-serif leading-relaxed mt-3">
+            La Redacción se disculpa por el error de cálculo en la nota principal. Subestimamos gravemente la magnitud del amor generado por esta mujer.
+            <span className="font-bold"> No son 73 años, son 73 toneladas de cariño puro</span> derramadas sobre todos nosotros.
+          </p>
+        </div>
 
         {/* Footer */}
         <footer className="mt-20 pt-10 border-t-4 border-double border-ink-dark text-center space-y-4">
