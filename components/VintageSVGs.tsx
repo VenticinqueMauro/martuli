@@ -184,3 +184,44 @@ export const SpoonIcon: React.FC<SVGProps> = ({ width = 40, height = 40, classNa
     <line x1="12" y1="11" x2="12" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
   </svg>
 );
+
+export const CalendarIcon: React.FC<SVGProps> = ({ width = 48, height = 48, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    <rect x="4" y="5" width="16" height="16" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <line x1="4" y1="9" x2="20" y2="9" stroke="currentColor" strokeWidth="1.5"/>
+    <line x1="8" y1="3" x2="8" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="16" y1="3" x2="16" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <circle cx="8" cy="13" r="0.8" fill="currentColor"/>
+    <circle cx="12" cy="13" r="0.8" fill="currentColor"/>
+    <circle cx="16" cy="13" r="0.8" fill="currentColor"/>
+    <circle cx="8" cy="17" r="0.8" fill="currentColor"/>
+    <circle cx="12" cy="17" r="0.8" fill="currentColor"/>
+    <circle cx="16" cy="17" r="0.8" fill="currentColor"/>
+  </svg>
+);
+
+export const CloudIcon: React.FC<SVGProps> = ({ width = 48, height = 48, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    <path d="M18 15C19.6569 15 21 13.6569 21 12C21 10.3431 19.6569 9 18 9C17.8 9 17.6 9.02 17.41 9.06C17.14 6.74 15.23 5 13 5C10.52 5 8.5 7.02 8.5 9.5C8.5 9.67 8.51 9.84 8.53 10C6.57 10.16 5 11.84 5 14C5 16.21 6.79 18 9 18H17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <path d="M12 11L12 18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+    <path d="M10 13L12 11L14 13" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+  </svg>
+);
+
+export const DocumentIcon: React.FC<SVGProps> = ({ width = 48, height = 48, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    <path d="M6 3H14L18 7V21H6V3Z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <path d="M14 3V7H18" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <line x1="9" y1="11" x2="15" y2="11" stroke="currentColor" strokeWidth="1"/>
+    <line x1="9" y1="14" x2="15" y2="14" stroke="currentColor" strokeWidth="1"/>
+    <line x1="9" y1="17" x2="13" y2="17" stroke="currentColor" strokeWidth="1"/>
+    <rect x="8" y="18" width="2" height="2" fill="currentColor" opacity="0.3"/>
+  </svg>
+);
+
+export const LightningBoltIcon: React.FC<SVGProps> = ({ width = 48, height = 48, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+    <path d="M13 2L11 22" stroke="currentColor" strokeWidth="0.5" opacity="0.3"/>
+  </svg>
+);

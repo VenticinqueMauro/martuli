@@ -18,7 +18,11 @@ import {
   TelegramIcon,
   ChefHatIcon,
   PlateIcon,
-  UtensilsIcon
+  UtensilsIcon,
+  CalendarIcon,
+  CloudIcon,
+  DocumentIcon,
+  LightningBoltIcon
 } from './components/VintageSVGs';
 
 const App: React.FC = () => {
@@ -394,6 +398,172 @@ const App: React.FC = () => {
           <OrnamentDivider width={200} height={24} className="text-ink-light" />
         </div>
 
+        {/* SECCIÓN: SUPER PODERES DE MARTA */}
+        <section className="my-16 py-12 px-4 md:px-8 border-y-8 border-double border-ink-dark bg-gradient-to-b from-paper-dark to-paper-medium shadow-2xl relative overflow-hidden">
+
+          <div className="relative z-10">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <div className="border-4 border-ink-dark bg-ink-black text-paper-light inline-block px-8 py-4 shadow-xl mb-4">
+                <p className="text-xs uppercase tracking-[0.3em] font-bold mb-1">Investigación Científica Extraordinaria</p>
+                <h3 className="headline-font text-3xl md:text-5xl font-black uppercase tracking-wide">
+                  Los Super Poderes de Marta
+                </h3>
+                <p className="text-xs uppercase tracking-[0.3em] font-bold mt-1">Fenómenos Inexplicables para la Ciencia Moderna</p>
+              </div>
+              <p className="text-sm italic font-serif text-ink-medium max-w-3xl mx-auto leading-relaxed">
+                Nuestro equipo de corresponsales ha documentado capacidades que desafían toda lógica conocida.
+                La Academia de Ciencias se niega a comentar, alegando que "simplemente no es posible".
+              </p>
+            </div>
+
+            {/* Super Poderes Grid */}
+            <div className="max-w-5xl mx-auto space-y-8">
+
+              {/* Super Poder 1: Memoria de Cumpleaños */}
+              <div className="border-4 border-ink-dark bg-paper-light shadow-xl">
+                <div className="flex flex-col md:flex-row">
+                  {/* Contenido */}
+                  <div className="flex-1 p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="bg-ink-black text-paper-light px-3 py-1 text-xs font-black uppercase tracking-wider">
+                        Super Poder I
+                      </div>
+                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight flex-1">
+                        Memoria Genealógica Sobrehumana
+                      </h4>
+                    </div>
+                    <div className="space-y-4 font-serif text-base leading-relaxed">
+                      <p className="text-justify">
+                        <span className="text-5xl font-black float-left mr-3 leading-[0.7] mt-1">E</span>
+                        n un descubrimiento que ha dejado atónitos a los neurocientíficos de tres continentes,
+                        la señora Marta Gettar ha demostrado poseer una capacidad cerebral que excede en
+                        <span className="font-bold"> 47.000% </span>
+                        las facultades de memoria humana promedio.
+                      </p>
+                      <div className="border-l-4 border-ink-dark pl-4 bg-paper-medium/60 py-3">
+                        <p className="italic">
+                          No existe un solo cumpleaños en el árbol genealógico completo —incluyendo primos terceros,
+                          cuñados de tíos políticos y el veterinario del perro del vecino— que escape de su registro mental.
+                          Pero la habilidad no termina allí: además organiza, coordina y
+                          <span className="font-bold not-italic"> EXIGE </span>
+                          que cada miembro de la familia salude puntualmente.
+                        </p>
+                      </div>
+                      <p className="text-sm border-t-2 border-ink-dark/30 pt-3 text-ink-medium">
+                        <span className="font-bold uppercase text-xs tracking-wider">Testimonio del Dr. Rodríguez (Universidad de Tucumán):</span>
+                        "Hemos intentado mapear su red neuronal. Nuestros equipos se sobrecalentaron. Es imposible."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Super Poder 2: Pronóstico del Clima */}
+              <div className="border-4 border-ink-dark bg-paper-light shadow-xl">
+                <div className="flex flex-col md:flex-row-reverse">
+                  {/* Icono lateral */}
+                  {/* Contenido */}
+                  <div className="flex-1 p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="bg-ink-black text-paper-light px-3 py-1 text-xs font-black uppercase tracking-wider">
+                        Super Poder II
+                      </div>
+                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight flex-1">
+                        Clarividencia Meteorológica Absoluta
+                      </h4>
+                    </div>
+                    <div className="space-y-4 font-serif text-base leading-relaxed">
+                      <p className="text-justify">
+                        <span className="text-5xl font-black float-left mr-3 leading-[0.7] mt-1">L</span>
+                        a Oficina Nacional de Meteorología ha solicitado formalmente contratar a Marta como
+                        consultora principal después de que predijera
+                        <span className="font-bold"> 873 eventos climáticos consecutivos </span>
+                        con exactitud milimétrica, superando a satélites de última generación.
+                      </p>
+                      <div className="border-l-4 border-ink-dark pl-4 bg-paper-medium/60 py-3">
+                        <p className="italic">
+                          Su método es inescrutable: observa el cielo brevemente, huele el aire,
+                          y declara con autoridad papal si lloverá, nevará o caerán meteoritos.
+                          Jamás se ha equivocado. Los radares doppler lloran de envidia.
+                          El Servicio Meteorológico Nacional ha considerado cerrar operaciones
+                          y simplemente <span className="font-bold not-italic">llamar a Marta cada mañana.</span>
+                        </p>
+                      </div>
+                      <p className="text-sm border-t-2 border-ink-dark/30 pt-3 text-ink-medium">
+                        <span className="font-bold uppercase text-xs tracking-wider">Declaración oficial:</span>
+                        "Nuestros modelos computacionales son obsoletos. Ella ve el futuro atmosférico."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Super Poder 3: Gestión Burocrática Universal */}
+              <div className="border-4 border-ink-dark bg-paper-light shadow-xl">
+                <div className="flex flex-col md:flex-row">
+                  {/* Contenido */}
+                  <div className="flex-1 p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="bg-ink-black text-paper-light px-3 py-1 text-xs font-black uppercase tracking-wider">
+                        Super Poder III
+                      </div>
+                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight flex-1">
+                        Omnipotencia Administrativa Total
+                      </h4>
+                    </div>
+                    <div className="space-y-4 font-serif text-base leading-relaxed">
+                      <p className="text-justify">
+                        <span className="text-5xl font-black float-left mr-3 leading-[0.7] mt-1">E</span>
+                        n un fenómeno que ha dejado perplejos a sociólogos y funcionarios públicos por igual,
+                        Marta ha asumido el rol de
+                        <span className="font-bold"> Gerente General de Trámites Familiares™</span>,
+                        una posición que no figura en ningún organigrama conocido pero que resulta
+                        absolutamente indispensable para el funcionamiento de todo el clan.
+                      </p>
+                      <div className="border-l-4 border-ink-dark pl-4 bg-paper-medium/60 py-3">
+                        <p className="italic">
+                          Renovación de documentos, turnos médicos, pagos de impuestos, reclamos a empresas de servicios,
+                          inscripciones escolares, gestiones bancarias, trámites migratorios y consultas legales:
+                          <span className="font-bold not-italic"> TODO </span>
+                          pasa por su escritorio invisible. Maneja simultáneamente
+                          <span className="font-bold not-italic"> 23 expedientes burocráticos </span>
+                          de diferentes miembros de la familia sin confundir un solo papel.
+                          Las oficinas públicas han comenzado a reconocerla y le asignan ventanilla preferencial
+                          por "volumen de operaciones familiares".
+                        </p>
+                      </div>
+                      <p className="text-sm border-t-2 border-ink-dark/30 pt-3 text-ink-medium">
+                        <span className="font-bold uppercase text-xs tracking-wider">Confesión anónima de familiar:</span>
+                        "No sé dónde está mi DNI. Pero Marta sí. Ella siempre sabe."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Nota de cierre */}
+            <div className="mt-12 max-w-3xl mx-auto border-4 border-double border-ink-black bg-ink-black text-paper-light p-6 text-center shadow-2xl">
+              <p className="font-serif text-lg italic leading-relaxed mb-3">
+                "La ciencia aún no puede explicar estos fenómenos.
+                Los escépticos se han rendido. Los testigos permanecen asombrados."
+              </p>
+              <div className="border-t-2 border-paper-dark/50 pt-3 mt-3">
+                <p className="text-xs uppercase tracking-[0.3em] font-black">
+                  Investigación en curso • Actualización permanente • Misterio sin resolver
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Divider */}
+        <div className="flex justify-center my-10">
+          <OrnamentDivider width={200} height={24} className="text-ink-light" />
+        </div>
+
         {/* Sección de Sociales - Fotos Adicionales */}
         {/* <section className="my-16 py-8 px-6 border-4 border-double border-ink-dark bg-paper-medium/50">
           <div className="text-center mb-8">
@@ -474,7 +644,7 @@ const App: React.FC = () => {
             <CakeIcon width={64} height={64} className="text-ink-medium" />
           </div>
           <h3 className="headline-font text-4xl md:text-5xl font-black uppercase mb-6 tracking-wide">
-            ¡Feliz Cumpleaños, Marta!
+            ¡Feliz Cumpleaños, Martuli!
           </h3>
           <div className="max-w-3xl mx-auto space-y-5 mb-12">
             <p className="font-serif italic text-xl md:text-2xl leading-relaxed border-y-2 border-ink-dark py-6">
