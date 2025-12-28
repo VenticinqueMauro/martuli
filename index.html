@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Heraldo de 1953</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4ecd8;
+      color: #1a1a1a;
+      font-family: 'EB+Garamond', serif;
+    }
+    .newspaper-title {
+      font-family: 'UnifrakturMaguntia', cursive;
+    }
+    .headline-font {
+      font-family: 'Playfair Display', serif;
+    }
+    .sepia-photo {
+      filter: sepia(0.8) contrast(1.1) brightness(0.9);
+      border: 1px solid #444;
+      padding: 4px;
+      background: #fff;
+    }
+    .paper-texture {
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    }
+    .column-rule {
+      border-right: 1px solid #ccc;
+    }
+    @media (max-width: 768px) {
+      .column-rule {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+<body class="paper-texture">
+  <div id="root"></div>
+</body>
+</html>

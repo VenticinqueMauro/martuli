@@ -1,0 +1,7 @@
+{
+  "name": "El Heraldo de 1953 - Digital Vintage Edition",
+  "description": "A digital vintage newspaper dedicated to the matriarch of the family, celebrating 73 years of legacy with a 1950s aesthetic and AI-powered storytelling.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
