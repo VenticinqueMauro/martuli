@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import NewspaperHeader from './components/NewspaperHeader';
 import LegacySection from './components/LegacySection';
 import ImageSlider from './components/ImageSlider';
+import Lightbox from './components/Lightbox';
 import {
   CameraIcon,
   StorkIcon,
@@ -30,6 +31,12 @@ const App: React.FC = () => {
   const [pioneerImages, setPioneerImages] = useState<{ ferez: string | null, ana: string | null }>({ ferez: null, ana: null });
   const [extraPhotos, setExtraPhotos] = useState<{ wedding: string | null, trip: string | null }>({ wedding: null, trip: null });
 
+  // Lightbox states
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxName, setLightboxName] = useState('imagen');
+
   const heroFileInputRef = useRef<HTMLInputElement>(null);
   const ferezFileInputRef = useRef<HTMLInputElement>(null);
   const anaFileInputRef = useRef<HTMLInputElement>(null);
@@ -50,6 +57,17 @@ const App: React.FC = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const openLightbox = (images: string[], index: number = 0, name: string = 'imagen') => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxName(name);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
   };
 
   const articleContent = `n un caluroso día de enero de 1953, mientras el mundo celebraba el comienzo de un nuevo año, San Miguel de Tucumán recibía a quien se convertiría en el corazón de nuestra familia. Marta llegó a este mundo trayendo consigo la promesa de amor incondicional que hoy, setenta y tres años después, sigue cumpliendo con creces. Cada día vivido es una página de historias compartidas, cada momento un legado de amor y dedicación inquebrantable. Hoy, toda la Argentina se detiene para celebrar a esta mujer extraordinaria.`;
@@ -81,14 +99,24 @@ const App: React.FC = () => {
 
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-1">
-                <div
-                  onClick={() => heroFileInputRef.current?.click()}
-                  className="mb-4 relative border-2 border-ink-medium bg-paper-dark cursor-pointer group aspect-[4/3] overflow-hidden flex items-center justify-center"
-                >
+                <div className="mb-4 relative border-2 border-ink-medium bg-paper-dark group aspect-[4/3] overflow-hidden flex items-center justify-center">
                   {heroImage ? (
-                    <img src={heroImage} alt="Hero" className="w-full h-full object-cover sepia-photo" />
+                    <div
+                      className="relative w-full h-full cursor-pointer"
+                      onClick={() => openLightbox([heroImage], 0, 'foto-principal')}
+                    >
+                      <img src={heroImage} alt="Hero" className="w-full h-full object-cover sepia-photo" />
+                      <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
+                          <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
+                        </div>
+                      </div>
+                    </div>
                   ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-paper-light">
+                    <div
+                      onClick={() => heroFileInputRef.current?.click()}
+                      className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-paper-light cursor-pointer"
+                    >
                       <StorkIcon width={80} height={80} className="mb-4 text-ink-light" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
                         <div className="bg-paper-light/95 p-3 rounded-sm shadow-lg border-2 border-ink-dark mb-2">
@@ -188,14 +216,24 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start max-w-4xl mx-auto">
             {/* Ferez Gettar */}
             <div className="space-y-4">
-              <div
-                onClick={() => ferezFileInputRef.current?.click()}
-                className="relative aspect-[3/4] border-4 border-ink-dark bg-paper-dark cursor-pointer group overflow-hidden flex items-center justify-center shadow-xl"
-              >
+              <div className="relative aspect-[3/4] border-4 border-ink-dark bg-paper-dark group overflow-hidden flex items-center justify-center shadow-xl">
                 {pioneerImages.ferez ? (
-                  <img src={pioneerImages.ferez} alt="Ferez Gettar" className="w-full h-full object-cover sepia-photo" />
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => openLightbox([pioneerImages.ferez], 0, 'ferez-gettar')}
+                  >
+                    <img src={pioneerImages.ferez} alt="Ferez Gettar" className="w-full h-full object-cover sepia-photo" />
+                    <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
+                        <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <div className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-paper-light">
+                  <div
+                    onClick={() => ferezFileInputRef.current?.click()}
+                    className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-paper-light cursor-pointer"
+                  >
                     <TopHatIcon width={60} height={60} className="mb-4 text-ink-light" />
                     <p className="text-xs font-black uppercase tracking-wide">Fotografía por Revelar</p>
                     <div className="mt-6 border-2 border-ink-dark px-4 py-2 text-[10px] uppercase font-bold group-hover:bg-ink-black group-hover:text-paper-light transition-colors">Seleccionar Retrato</div>
@@ -211,14 +249,24 @@ const App: React.FC = () => {
 
             {/* Ana Frasca */}
             <div className="space-y-4">
-              <div
-                onClick={() => anaFileInputRef.current?.click()}
-                className="relative aspect-[3/4] border-4 border-ink-dark bg-paper-dark cursor-pointer group overflow-hidden flex items-center justify-center shadow-xl"
-              >
+              <div className="relative aspect-[3/4] border-4 border-ink-dark bg-paper-dark group overflow-hidden flex items-center justify-center shadow-xl">
                 {pioneerImages.ana ? (
-                  <img src={pioneerImages.ana} alt="Ana Frasca" className="w-full h-full object-cover sepia-photo" />
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => openLightbox([pioneerImages.ana], 0, 'ana-frasca')}
+                  >
+                    <img src={pioneerImages.ana} alt="Ana Frasca" className="w-full h-full object-cover sepia-photo" />
+                    <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
+                        <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <div className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-paper-light">
+                  <div
+                    onClick={() => anaFileInputRef.current?.click()}
+                    className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-paper-light cursor-pointer"
+                  >
                     <FlowerIcon width={60} height={60} className="mb-4 text-ink-light" />
                     <p className="text-xs font-black uppercase tracking-wide">Fotografía por Revelar</p>
                     <div className="mt-6 border-2 border-ink-dark px-4 py-2 text-[10px] uppercase font-bold group-hover:bg-ink-black group-hover:text-paper-light transition-colors">Seleccionar Retrato</div>
@@ -285,7 +333,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Legacy Section - Hijos y Nietos */}
-        <LegacySection />
+        <LegacySection onImageClick={(image, name) => openLightbox([image], 0, name)} />
 
         {/* Divider */}
         <div className="flex justify-center my-10">
@@ -450,7 +498,7 @@ const App: React.FC = () => {
                         </p>
                       </div>
                       <p className="text-sm border-t-2 border-ink-dark/30 pt-3 text-ink-medium">
-                        <span className="font-bold uppercase text-xs tracking-wider">Testimonio del Dr. Rodríguez (Universidad de Tucumán):</span>
+                        <span className="font-bold uppercase text-xs tracking-wider">Testimonio del Dr. Cosito Comue (Universidad de Tucumán):</span>
                         "Hemos intentado mapear su red neuronal. Nuestros equipos se sobrecalentaron. Es imposible."
                       </p>
                     </div>
@@ -649,6 +697,7 @@ const App: React.FC = () => {
             <ImageSlider
               title="Álbum de Recuerdos"
               subtitle="73 años de momentos inolvidables"
+              onImageClick={(images, index) => openLightbox(images, index, 'album-recuerdos')}
             />
           </div>
 
@@ -676,7 +725,7 @@ const App: React.FC = () => {
           <div className="flex justify-center mb-4">
             <OrnamentDivider width={180} height={20} className="text-ink-light" />
           </div>
-          <p className="text-xs uppercase font-bold tracking-widest">© 1953 - 2026 El Heraldo Familiar</p>
+          <p className="text-xs uppercase font-bold tracking-widest">© 1953 - 2026 The Martuli Times</p>
           <p className="text-[10px] uppercase tracking-wider text-ink-light">San Miguel de Tucumán, República Argentina</p>
           <p className="text-xs uppercase font-bold">Todos los Derechos Reservados</p>
           <div className="pt-4 border-t border-ink-lighter mt-4">
@@ -684,6 +733,15 @@ const App: React.FC = () => {
           </div>
         </footer>
       </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        images={lightboxImages}
+        initialIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={closeLightbox}
+        imageName={lightboxName}
+      />
     </div>
   );
 };

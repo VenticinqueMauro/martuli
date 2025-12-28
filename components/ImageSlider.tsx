@@ -4,11 +4,13 @@ import { ArrowLeftIcon, ArrowRightIcon, CameraIcon, PlusIcon } from './VintageSV
 interface ImageSliderProps {
   title?: string;
   subtitle?: string;
+  onImageClick?: (images: string[], index: number) => void;
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({
   title = "Galería de Recuerdos",
-  subtitle = "Momentos inmortalizados para la posteridad"
+  subtitle = "Momentos inmortalizados para la posteridad",
+  onImageClick
 }) => {
   const [images, setImages] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,14 +66,26 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       <div className="relative border-8 border-double border-ink-dark bg-paper-dark shadow-2xl">
 
         {/* Main Image Display */}
-        <div className="relative aspect-[4/3] bg-paper-light overflow-hidden">
+        <div className="relative aspect-[4/3] bg-paper-light overflow-hidden group">
           {images.length > 0 ? (
             <>
-              <img
-                src={images[currentIndex]}
-                alt={`Recuerdo ${currentIndex + 1}`}
-                className="w-full h-full object-contain sepia-photo"
-              />
+              <div
+                className={`relative w-full h-full ${onImageClick ? 'cursor-pointer' : ''}`}
+                onClick={() => onImageClick?.(images, currentIndex)}
+              >
+                <img
+                  src={images[currentIndex]}
+                  alt={`Recuerdo ${currentIndex + 1}`}
+                  className="w-full h-full object-contain sepia-photo"
+                />
+                {onImageClick && (
+                  <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
+                      <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Navigation Arrows */}
               {images.length > 1 && (
