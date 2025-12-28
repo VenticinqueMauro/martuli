@@ -421,15 +421,16 @@ const App: React.FC = () => {
             <div className="max-w-5xl mx-auto space-y-8">
 
               {/* Super Poder 1: Memoria de Cumpleaños */}
-              <div className="border-4 border-ink-dark bg-paper-light shadow-xl">
+              <div className="border-4 border-ink-dark bg-paper-light shadow-xl relative">
+                {/* Badge absoluto */}
+                <div className="absolute top-3 right-3 bg-ink-black text-paper-light px-2 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-wider shadow-md">
+                  I
+                </div>
                 <div className="flex flex-col md:flex-row">
                   {/* Contenido */}
-                  <div className="flex-1 p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-ink-black text-paper-light px-3 py-1 text-xs font-black uppercase tracking-wider">
-                        Super Poder I
-                      </div>
-                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight flex-1">
+                  <div className="flex-1 p-6 md:p-8 pt-10 md:pt-8">
+                    <div className="mb-4">
+                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight">
                         Memoria Genealógica Sobrehumana
                       </h4>
                     </div>
@@ -460,16 +461,17 @@ const App: React.FC = () => {
               </div>
 
               {/* Super Poder 2: Pronóstico del Clima */}
-              <div className="border-4 border-ink-dark bg-paper-light shadow-xl">
+              <div className="border-4 border-ink-dark bg-paper-light shadow-xl relative">
+                {/* Badge absoluto */}
+                <div className="absolute top-3 right-3 bg-ink-black text-paper-light px-2 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-wider shadow-md">
+                  II
+                </div>
                 <div className="flex flex-col md:flex-row-reverse">
                   {/* Icono lateral */}
                   {/* Contenido */}
-                  <div className="flex-1 p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-ink-black text-paper-light px-3 py-1 text-xs font-black uppercase tracking-wider">
-                        Super Poder II
-                      </div>
-                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight flex-1">
+                  <div className="flex-1 p-6 md:p-8 pt-10 md:pt-8">
+                    <div className="mb-4">
+                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight">
                         Clarividencia Meteorológica Absoluta
                       </h4>
                     </div>
@@ -500,15 +502,16 @@ const App: React.FC = () => {
               </div>
 
               {/* Super Poder 3: Gestión Burocrática Universal */}
-              <div className="border-4 border-ink-dark bg-paper-light shadow-xl">
+              <div className="border-4 border-ink-dark bg-paper-light shadow-xl relative">
+                {/* Badge absoluto */}
+                <div className="absolute top-3 right-3 bg-ink-black text-paper-light px-2 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-wider shadow-md">
+                  III
+                </div>
                 <div className="flex flex-col md:flex-row">
                   {/* Contenido */}
-                  <div className="flex-1 p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-ink-black text-paper-light px-3 py-1 text-xs font-black uppercase tracking-wider">
-                        Super Poder III
-                      </div>
-                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight flex-1">
+                  <div className="flex-1 p-6 md:p-8 pt-10 md:pt-8">
+                    <div className="mb-4">
+                      <h4 className="headline-font text-2xl md:text-3xl font-black uppercase leading-tight">
                         Omnipotencia Administrativa Total
                       </h4>
                     </div>
