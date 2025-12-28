@@ -15,7 +15,10 @@ import {
   CompassIcon,
   OrnamentDivider,
   SunIcon,
-  TelegramIcon
+  TelegramIcon,
+  ChefHatIcon,
+  PlateIcon,
+  UtensilsIcon
 } from './components/VintageSVGs';
 
 const App: React.FC = () => {
@@ -287,15 +290,118 @@ const App: React.FC = () => {
           <OrnamentDivider width={200} height={24} className="text-ink-light" />
         </div>
 
+        {/* SECCIÓN: GASTRONOMÍA */}
+        <section className="my-16 py-10 px-4 md:px-8 border-y-4 border-double border-ink-dark bg-paper-light/40 shadow-inner">
+          <div className="text-center mb-10">
+            <div className="flex justify-center mb-4">
+              <ChefHatIcon width={56} height={56} className="text-ink-medium" />
+            </div>
+            <h3 className="headline-font text-3xl md:text-4xl font-black uppercase tracking-widest border-b-4 border-ink-dark inline-block px-8 pb-3">
+              La Mesa de Marta
+            </h3>
+            <p className="text-sm italic font-serif mt-3 text-ink-medium">
+              Recetario de sabores que alimentan el alma
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            {/* Intro */}
+            <div className="text-center max-w-3xl mx-auto mb-12 border-2 border-ink-dark p-6 bg-paper-medium">
+              <p className="font-serif italic text-base md:text-lg leading-relaxed">
+                "En la cocina de Marta no solo se preparan alimentos, se tejen historias y se forjan recuerdos.
+                Cada plato lleva el sello inconfundible del amor materno, transmitido de generación en generación."
+              </p>
+            </div>
+
+            {/* Platos en Grid de 3 columnas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+              {/* Quipi */}
+              <div className="border-4 border-ink-dark bg-paper-light p-5 shadow-md hover:shadow-xl transition-shadow">
+                <h4 className="headline-font text-xl font-black uppercase text-center mb-2 border-b-2 border-ink-dark pb-2">
+                  Quipi
+                </h4>
+                <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
+                  Tradición Tucumana
+                </p>
+              </div>
+
+              {/* Puré de Garbanzos */}
+              <div className="border-4 border-ink-dark bg-paper-light p-5 shadow-md hover:shadow-xl transition-shadow">
+                <h4 className="headline-font text-xl font-black uppercase text-center mb-2 border-b-2 border-ink-dark pb-2">
+                  Puré de Garbanzos
+                </h4>
+                <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
+                  Cremosidad Sublime
+                </p>
+              </div>
+
+              {/* Arroz Shari */}
+              <div className="border-4 border-ink-dark bg-paper-light p-5 shadow-md hover:shadow-xl transition-shadow">
+                <h4 className="headline-font text-xl font-black uppercase text-center mb-2 border-b-2 border-ink-dark pb-2">
+                  Arroz Shari
+                </h4>
+                <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
+                  Especialidad de la Casa
+                </p>
+              </div>
+
+              {/* Fideos al Horno */}
+              <div className="border-4 border-ink-dark bg-paper-light p-5 shadow-md hover:shadow-xl transition-shadow">
+                <h4 className="headline-font text-xl font-black uppercase text-center mb-2 border-b-2 border-ink-dark pb-2">
+                  Fideos al Horno
+                </h4>
+                <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
+                  Clásico Dominical
+                </p>
+              </div>
+
+              {/* Arroz con Leche */}
+              <div className="border-4 border-ink-dark bg-paper-light p-5 shadow-md hover:shadow-xl transition-shadow">
+                <h4 className="headline-font text-xl font-black uppercase text-center mb-2 border-b-2 border-ink-dark pb-2">
+                  Arroz con Leche
+                </h4>
+                <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
+                  Postre Legendario
+                </p>
+              </div>
+
+              {/* Ensalada de Trigo */}
+              <div className="border-4 border-ink-dark bg-paper-light p-5 shadow-md hover:shadow-xl transition-shadow">
+                <h4 className="headline-font text-xl font-black uppercase text-center mb-2 border-b-2 border-ink-dark pb-2">
+                  Ensalada de Trigo
+                </h4>
+                <p className="text-xs uppercase tracking-widest text-center text-ink-light mb-3 font-bold">
+                  Frescura Nutritiva
+                </p>
+              </div>
+
+            </div>
+
+            {/* Nota Final */}
+            <div className="mt-10 text-center max-w-2xl mx-auto border-t-2 border-ink-dark pt-6">
+              <p className="font-serif text-sm italic text-ink-medium leading-relaxed">
+                <span className="font-bold not-italic text-base">Nota del Editor:</span> Se ruega a los lectores no intentar replicar
+                estas recetas sin la supervisión directa de la chef Marta. Los intentos previos han resultado
+                en aproximaciones dignas, pero jamás en el sabor exacto del original.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Divider */}
+        <div className="flex justify-center my-10">
+          <OrnamentDivider width={200} height={24} className="text-ink-light" />
+        </div>
+
         {/* Sección de Sociales - Fotos Adicionales */}
-        <section className="my-16 py-8 px-6 border-4 border-double border-ink-dark bg-paper-medium/50">
+        {/* <section className="my-16 py-8 px-6 border-4 border-double border-ink-dark bg-paper-medium/50">
           <div className="text-center mb-8">
             <h3 className="headline-font text-3xl font-black uppercase tracking-widest border-b-4 border-ink-dark inline-block px-8 pb-2">Sociales</h3>
             <p className="text-sm italic font-serif mt-2 text-ink-medium">Momentos memorables de una vida plena</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            {/* Casamiento */}
             <div
               onClick={() => weddingFileInputRef.current?.click()}
               className="border-4 border-ink-dark flex flex-col cursor-pointer group bg-paper-light shadow-lg"
@@ -321,7 +427,6 @@ const App: React.FC = () => {
               <input type="file" ref={weddingFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'wedding')} accept="image/*" />
             </div>
 
-            {/* Viaje */}
             <div
               onClick={() => tripFileInputRef.current?.click()}
               className="border-4 border-ink-dark flex flex-col cursor-pointer group bg-paper-light shadow-lg"
@@ -347,7 +452,7 @@ const App: React.FC = () => {
               <input type="file" ref={tripFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'trip')} accept="image/*" />
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Fe de Erratas - Tono humorístico */}
         <div className="max-w-2xl mx-auto border-4 border-double border-ink-dark p-5 my-12 text-center bg-paper-light shadow-md">

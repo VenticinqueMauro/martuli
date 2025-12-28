@@ -9,11 +9,11 @@ const LegacySection: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   const family: LegacyItem[] = [
-    { name: "VERÓNICA", role: "La Primogénita", description: "El primer eslabón de esta cadena de amor inquebrantable." },
-    { name: "MAURO", role: "El Hijo", description: "Pilar que mantiene viva la tradición familiar." },
-    { name: "CAMILA", role: "Primera Nieta", description: "El orgullo que renovó las esperanzas." },
-    { name: "GINO", role: "Nieto Revoltoso", description: "La alegría inquieta que llena de risas el hogar." },
-    { name: "MIA", role: "La Pequeña", description: "La dulzura que completa nuestro círculo." }
+    { name: "VERÓNICA", role: "La Primogénita", description: "" },
+    { name: "MAURO", role: "El Hijo", description: "" },
+    { name: "CAMILA", role: "Primera Nieta", description: "" },
+    { name: "GINO", role: "Primer Nieto", description: "" },
+    { name: "MIA", role: "La Pequeña", description: "" }
   ];
 
   const handleUpload = (idx: number) => {
@@ -51,7 +51,7 @@ const LegacySection: React.FC = () => {
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-paper-light">
                   <CameraIcon width={40} height={40} className="mb-2 text-ink-light group-hover:scale-110 transition-transform" />
-                  <p className="text-[9px] font-bold uppercase leading-tight tracking-wide">Retrato<br/>Familiar</p>
+                  <p className="text-[9px] font-bold uppercase leading-tight tracking-wide">Retrato<br />Familiar</p>
                 </div>
               )}
               <div className="absolute bottom-0 left-0 right-0 bg-ink-black text-white text-[8px] py-1.5 text-center opacity-0 group-hover:opacity-100 transition-opacity uppercase font-bold tracking-wide">

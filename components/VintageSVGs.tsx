@@ -150,3 +150,37 @@ export const PlusIcon: React.FC<SVGProps> = ({ width = 24, height = 24, classNam
     <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
   </svg>
 );
+
+export const PlateIcon: React.FC<SVGProps> = ({ width = 48, height = 48, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1" fill="none"/>
+    <circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="0.5" fill="none"/>
+  </svg>
+);
+
+export const UtensilsIcon: React.FC<SVGProps> = ({ width = 48, height = 48, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    {/* Fork */}
+    <path d="M7 3L7 10M7 10L7 21M7 10C5.5 10 5 8 5 6L5 3M7 10C8.5 10 9 8 9 6L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    {/* Knife */}
+    <path d="M17 3C17 3 15 5 15 8L15 21M15 8C15 8 17 10 19 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+export const ChefHatIcon: React.FC<SVGProps> = ({ width = 48, height = 48, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    <path d="M6 10C6 10 6 6 9 6C9 4 10 3 12 3C14 3 15 4 15 6C18 6 18 10 18 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <rect x="6" y="10" width="12" height="9" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" strokeWidth="1"/>
+    <line x1="8" y1="16" x2="16" y2="16" stroke="currentColor" strokeWidth="1"/>
+    <path d="M6 19L6 20C6 20.5 6.5 21 7 21L17 21C17.5 21 18 20.5 18 20L18 19" stroke="currentColor" strokeWidth="1.5"/>
+  </svg>
+);
+
+export const SpoonIcon: React.FC<SVGProps> = ({ width = 40, height = 40, className = "" }) => (
+  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" className={className}>
+    <ellipse cx="12" cy="7" rx="3" ry="4" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <line x1="12" y1="11" x2="12" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
