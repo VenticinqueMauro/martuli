@@ -1,6 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { LegacyItem } from '../types';
+import { CameraIcon } from './VintageSVGs';
 
 const LegacySection: React.FC = () => {
   const [images, setImages] = useState<Record<number, string>>({});
@@ -8,11 +9,11 @@ const LegacySection: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   const family: LegacyItem[] = [
-    { name: "VERÓNICA", role: "Primogénita", description: "El primer eslabón de esta cadena de amor." },
-    { name: "MAURO", role: "El Hijo", description: "Un pilar que mantiene viva la tradición." },
-    { name: "CAMILA", role: "La primera nieta", description: "El orgullo que renovó las esperanzas." },
-    { name: "GINO", role: "Nieto revoltoso", description: "La alegría inquieta de la familia." },
-    { name: "MIA", role: "La más pequeña", description: "La dulzura que completa el hogar." }
+    { name: "VERÓNICA", role: "La Primogénita", description: "El primer eslabón de esta cadena de amor inquebrantable." },
+    { name: "MAURO", role: "El Hijo", description: "Pilar que mantiene viva la tradición familiar." },
+    { name: "CAMILA", role: "Primera Nieta", description: "El orgullo que renovó las esperanzas." },
+    { name: "GINO", role: "Nieto Revoltoso", description: "La alegría inquieta que llena de risas el hogar." },
+    { name: "MIA", role: "La Pequeña", description: "La dulzura que completa nuestro círculo." }
   ];
 
   const handleUpload = (idx: number) => {
@@ -32,35 +33,38 @@ const LegacySection: React.FC = () => {
   };
 
   return (
-    <section className="my-12 border-t-2 border-black pt-8">
-      <div className="text-center mb-10">
-        <h3 className="headline-font text-4xl font-black uppercase border-b-2 border-black inline-block px-8 pb-2">El Legado</h3>
+    <section className="my-16 py-10 px-4 border-y-4 border-double border-black bg-white/20">
+      <div className="text-center mb-12">
+        <h3 className="headline-font text-3xl md:text-4xl font-black uppercase tracking-widest border-b-4 border-black inline-block px-8 pb-3">El Legado</h3>
+        <p className="text-sm italic font-serif mt-3 text-gray-700">Hijos y Nietos que perpetúan el amor</p>
       </div>
-      
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
         {family.map((item, idx) => (
           <div key={idx} className="flex flex-col">
-            <div 
+            <div
               onClick={() => handleUpload(idx)}
-              className="relative w-full aspect-[4/5] border border-gray-400 bg-[#e8dfc8] cursor-pointer hover:bg-black/5 transition-all group overflow-hidden mb-3"
+              className="relative w-full aspect-[3/4] border-4 border-black bg-[#e8dfc8] cursor-pointer hover:bg-black/5 transition-all group overflow-hidden mb-4 shadow-md"
             >
               {images[idx] ? (
                 <img src={images[idx]} className="w-full h-full object-cover sepia-photo" alt={item.name} />
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center">
-                  <span className="text-3xl mb-1 opacity-50 group-hover:scale-110 transition-transform">📸</span>
-                  <p className="text-[10px] font-bold uppercase leading-tight">Clic para subir foto</p>
+                <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-[#fdfaf1]">
+                  <CameraIcon width={40} height={40} className="mb-2 text-gray-500 group-hover:scale-110 transition-transform" />
+                  <p className="text-[9px] font-bold uppercase leading-tight tracking-wide">Retrato<br/>Familiar</p>
                 </div>
               )}
-              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-[9px] py-1 text-center opacity-0 group-hover:opacity-100 transition-opacity">
-                AÑADIR RETRATO
+              <div className="absolute bottom-0 left-0 right-0 bg-black text-white text-[8px] py-1.5 text-center opacity-0 group-hover:opacity-100 transition-opacity uppercase font-bold tracking-wide">
+                Añadir Foto
               </div>
             </div>
-            <h4 className="headline-font text-xl font-black uppercase leading-none mb-1">{item.name}</h4>
-            <p className="text-[10px] font-bold uppercase mb-2 text-gray-700">{item.role}</p>
-            <p className="text-xs leading-tight font-serif italic text-justify">
-              {item.description}
-            </p>
+            <div className="text-center border-t-2 border-black pt-2">
+              <h4 className="headline-font text-lg md:text-xl font-black uppercase leading-tight mb-1">{item.name}</h4>
+              <p className="text-[9px] font-bold uppercase mb-2 text-gray-700 tracking-widest">{item.role}</p>
+              <p className="text-[11px] leading-snug font-serif italic text-justify px-1">
+                {item.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>

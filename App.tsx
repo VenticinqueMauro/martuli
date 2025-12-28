@@ -1,36 +1,34 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import NewspaperHeader from './components/NewspaperHeader';
 import LegacySection from './components/LegacySection';
-import MemoryUploader from './components/MemoryUploader';
-import { generateVintageArticle } from './services/geminiService';
+import {
+  CameraIcon,
+  StorkIcon,
+  TopHatIcon,
+  FlowerIcon,
+  TreeIcon,
+  CakeIcon,
+  HeartIcon,
+  WeddingRingsIcon,
+  CompassIcon,
+  OrnamentDivider,
+  SunIcon,
+  TelegramIcon
+} from './components/VintageSVGs';
 
 const App: React.FC = () => {
-  const [articleContent, setArticleContent] = useState<string>("");
-  const [loading, setLoading] = useState(true);
   const [heroImage, setHeroImage] = useState<string | null>(null);
   const [pioneerImages, setPioneerImages] = useState<{ferez: string | null, ana: string | null}>({ferez: null, ana: null});
-  
+  const [extraPhotos, setExtraPhotos] = useState<{wedding: string | null, trip: string | null}>({wedding: null, trip: null});
+
   const heroFileInputRef = useRef<HTMLInputElement>(null);
   const ferezFileInputRef = useRef<HTMLInputElement>(null);
   const anaFileInputRef = useRef<HTMLInputElement>(null);
+  const weddingFileInputRef = useRef<HTMLInputElement>(null);
+  const tripFileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const loadContent = async () => {
-      const content = await generateVintageArticle("Marta Gettar", 73);
-      const cleaned = content
-        .replace(/\*\*/g, '')
-        .replace(/\*/g, '')
-        .replace(/#/g, '')
-        .replace(/`/g, '')
-        .trim();
-      setArticleContent(cleaned);
-      setLoading(false);
-    };
-    loadContent();
-  }, []);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, target: 'hero' | 'ferez' | 'ana') => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, target: 'hero' | 'ferez' | 'ana' | 'wedding' | 'trip') => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -39,48 +37,58 @@ const App: React.FC = () => {
         if (target === 'hero') setHeroImage(result);
         if (target === 'ferez') setPioneerImages(prev => ({...prev, ferez: result}));
         if (target === 'ana') setPioneerImages(prev => ({...prev, ana: result}));
+        if (target === 'wedding') setExtraPhotos(prev => ({...prev, wedding: result}));
+        if (target === 'trip') setExtraPhotos(prev => ({...prev, trip: result}));
       };
       reader.readAsDataURL(file);
     }
   };
 
+  const articleContent = `n un caluroso día de enero de 1953, mientras el mundo celebraba el comienzo de un nuevo año, San Miguel de Tucumán recibía a quien se convertiría en el corazón de nuestra familia. Marta llegó a este mundo trayendo consigo la promesa de amor incondicional que hoy, setenta y tres años después, sigue cumpliendo con creces. Cada arruga es un mapa de risas compartidas, cada cana un testimonio de sabiduría acumulada. Hoy, toda la Argentina se detiene para celebrar a esta mujer extraordinaria.`;
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 bg-white/40 shadow-2xl my-4 md:my-10 border border-gray-300 relative paper-texture">
       <div className="absolute inset-0 pointer-events-none border-[12px] border-double border-gray-200/50"></div>
-      
+
       <div className="relative z-10 px-2 md:px-8">
         <NewspaperHeader />
 
+        {/* Divider ornamental */}
+        <div className="flex justify-center my-6">
+          <OrnamentDivider width={200} height={24} className="text-gray-600" />
+        </div>
+
         {/* Hero Section with Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 my-12">
-          
+
           {/* Main Content (8 cols) */}
           <section className="lg:col-span-8">
             <div className="text-center mb-8">
               <h2 className="headline-font text-4xl md:text-6xl font-black uppercase tracking-tight leading-none mb-4">
                 Nace la mujer que cambiaría nuestro mundo
               </h2>
-              <div className="w-24 h-1 bg-black mx-auto mb-4"></div>
+              <div className="w-32 h-0.5 bg-black mx-auto mb-2"></div>
+              <div className="w-20 h-0.5 bg-black mx-auto mb-4"></div>
             </div>
 
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-1">
-                <div 
+                <div
                   onClick={() => heroFileInputRef.current?.click()}
-                  className="mb-4 relative border border-gray-400 bg-[#e8dfc8] cursor-pointer group aspect-[4/3] overflow-hidden flex items-center justify-center"
+                  className="mb-4 relative border-2 border-gray-600 bg-[#e8dfc8] cursor-pointer group aspect-[4/3] overflow-hidden flex items-center justify-center"
                 >
                   {heroImage ? (
                     <img src={heroImage} alt="Hero" className="w-full h-full object-cover sepia-photo" />
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-[#fdfaf1]">
-                      <div className="text-7xl mb-2 grayscale opacity-60">🕊️</div>
+                      <StorkIcon width={80} height={80} className="mb-4 text-gray-500" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <div className="bg-white/90 p-3 rounded-full shadow-lg border border-black mb-2">
-                           <span className="text-2xl">📸</span>
+                         <div className="bg-white/90 p-3 rounded-sm shadow-lg border-2 border-black mb-2">
+                           <CameraIcon width={32} height={32} className="text-black" />
                          </div>
-                         <p className="text-[10px] font-black uppercase tracking-tighter px-4 text-black">Haga clic para añadir la foto histórica de mamá</p>
+                         <p className="text-[10px] font-black uppercase tracking-wider px-4 text-black bg-white/80 py-1">Haga clic para añadir fotografía</p>
                       </div>
-                      <div className="mt-2 text-xs font-serif italic text-gray-500">Ilustración de época: La Cigüeña Real</div>
+                      <div className="mt-2 text-xs font-serif italic text-gray-500 border-t border-gray-300 pt-2">Ilustración de época: La Cigüeña Real</div>
                     </div>
                   )}
                   <input type="file" ref={heroFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'hero')} accept="image/*" />
@@ -91,168 +99,307 @@ const App: React.FC = () => {
               </div>
 
               <div className="flex-1 text-justify">
-                <h3 className="headline-font text-2xl font-bold uppercase mb-4 underline">Crónica de una Matriarca</h3>
-                {loading ? (
-                  <div className="animate-pulse space-y-4">
-                    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                    <div className="h-4 bg-gray-200 rounded"></div>
-                    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-                  </div>
-                ) : (
-                  <div className="text-lg leading-snug font-serif">
-                    <span className="text-6xl font-black float-left mr-3 leading-[0.8] mt-1">E</span>
-                    {articleContent}
-                  </div>
-                )}
+                <h3 className="headline-font text-2xl font-bold uppercase mb-4 border-b-2 border-black pb-2">Crónica de una Matriarca</h3>
+                <div className="text-lg leading-relaxed font-serif">
+                  <span className="text-7xl font-black float-left mr-3 leading-[0.7] mt-1 font-serif">E</span>
+                  {articleContent}
+                </div>
               </div>
             </div>
           </section>
 
           {/* Sidebar (4 cols) */}
-          <aside className="lg:col-span-4 space-y-8 border-l-2 border-black/10 pl-0 lg:pl-8">
-            <div className="border-4 border-double border-black p-4 bg-white/30">
-              <h4 className="headline-font text-xl font-black border-b border-black mb-4 uppercase text-center">Telegramas Urgentes</h4>
-              <div className="space-y-4 text-xs font-mono font-bold tracking-tighter uppercase leading-tight">
-                <p className="border-b border-dashed border-black pb-2">"STOP. GINO Y MIA PIDEN MILANESAS. STOP."</p>
-                <p className="border-b border-dashed border-black pb-2">"CAMILA REPORTA: ABUELA TE AMAMOS. STOP."</p>
-                <p className="pb-2">"MAURO Y VERO: FELIZ CUMPLE VIEJA. STOP."</p>
+          <aside className="lg:col-span-4 space-y-8 border-l-2 border-black/20 pl-0 lg:pl-8">
+            {/* Telegramas */}
+            <div className="border-4 border-double border-black p-4 bg-[#fffcf5] shadow-sm">
+              <div className="flex items-center justify-center gap-2 border-b-2 border-black mb-4 pb-2">
+                <TelegramIcon width={20} height={20} className="text-black" />
+                <h4 className="headline-font text-lg font-black uppercase text-center">Telegramas</h4>
+              </div>
+              <div className="space-y-4 text-[11px] font-mono font-bold tracking-tight uppercase leading-tight">
+                <p className="border-b border-dashed border-black pb-3 pl-2">
+                  <span className="text-[9px] text-gray-600">DE: GINO Y MIA</span><br/>
+                  "PEDIMOS MILANESAS URGENTE STOP"
+                </p>
+                <p className="border-b border-dashed border-black pb-3 pl-2">
+                  <span className="text-[9px] text-gray-600">DE: CAMILA</span><br/>
+                  "ABUELA TE AMAMOS INFINITO STOP"
+                </p>
+                <p className="pb-2 pl-2">
+                  <span className="text-[9px] text-gray-600">DE: MAURO Y VERO</span><br/>
+                  "FELIZ CUMPLE VIEJA QUERIDA STOP"
+                </p>
               </div>
             </div>
 
-            <div className="border-2 border-black p-4 bg-[#fffcf5]">
-              <h4 className="headline-font text-lg font-black border-b border-black mb-3 uppercase">Datos del Día (01/01/53)</h4>
-              <ul className="text-sm space-y-2 italic font-serif">
-                <li><span className="font-bold uppercase not-italic">Clima:</span> Sol radiante para un día histórico.</li>
-                <li><span className="font-bold uppercase not-italic">Precio:</span> Un abrazo fuerte.</li>
-                <li><span className="font-bold uppercase not-italic">Santoral:</span> Santa María Madre de Dios.</li>
+            {/* Datos del Día */}
+            <div className="border-2 border-black p-4 bg-white/90 shadow-sm">
+              <div className="flex items-center justify-center gap-2 border-b border-black mb-3 pb-2">
+                <SunIcon width={18} height={18} className="text-black" />
+                <h4 className="headline-font text-base font-black uppercase">Datos del Día</h4>
+              </div>
+              <ul className="text-sm space-y-2.5 font-serif">
+                <li className="border-l-2 border-black pl-2">
+                  <span className="font-bold uppercase text-[10px] tracking-wider">Fecha:</span><br/>
+                  <span className="italic">1° de Enero de 1953</span>
+                </li>
+                <li className="border-l-2 border-black pl-2">
+                  <span className="font-bold uppercase text-[10px] tracking-wider">Clima:</span><br/>
+                  <span className="italic">Sol radiante tucumano</span>
+                </li>
+                <li className="border-l-2 border-black pl-2">
+                  <span className="font-bold uppercase text-[10px] tracking-wider">Temperatura:</span><br/>
+                  <span className="italic">32° C a la sombra</span>
+                </li>
+                <li className="border-l-2 border-black pl-2">
+                  <span className="font-bold uppercase text-[10px] tracking-wider">Santoral:</span><br/>
+                  <span className="italic">Santa María Madre de Dios</span>
+                </li>
               </ul>
+            </div>
+
+            {/* Clasificado Vintage */}
+            <div className="border border-black p-3 bg-[#f9f6ed] text-center">
+              <p className="text-[9px] uppercase font-bold border-b border-black pb-1 mb-2">Clasificado</p>
+              <p className="font-serif text-xs leading-tight italic">
+                "Se busca: persona capaz de querer como Marta.<br/>
+                Requisito: imposible de cumplir."
+              </p>
             </div>
           </aside>
         </div>
 
-        {/* NUEVA SECCIÓN: LOS PIONEROS */}
-        <section className="my-16 py-10 px-8 border-4 border-double border-black bg-white/40 shadow-md">
-          <div className="text-center mb-8">
-            <h3 className="headline-font text-3xl font-black uppercase tracking-widest border-b-2 border-black inline-block px-10 pb-2">Los Pioneros: El Origen de la Estirpe</h3>
+        {/* Divider */}
+        <div className="flex justify-center my-8">
+          <OrnamentDivider width={200} height={24} className="text-gray-600" />
+        </div>
+
+        {/* SECCIÓN: LOS PIONEROS */}
+        <section className="my-16 py-10 px-4 md:px-8 border-y-4 border-double border-black bg-[#faf7f0] shadow-inner">
+          <div className="text-center mb-10">
+            <h3 className="headline-font text-2xl md:text-3xl font-black uppercase tracking-widest border-b-4 border-black inline-block px-6 md:px-10 pb-3">Los Pioneros</h3>
+            <p className="text-sm italic font-serif mt-3 text-gray-700">El Origen de la Estirpe Gettar</p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start max-w-4xl mx-auto">
             {/* Ferez Gettar */}
             <div className="space-y-4">
-              <div 
+              <div
                 onClick={() => ferezFileInputRef.current?.click()}
-                className="relative aspect-[3/4] border-2 border-black bg-[#e8dfc8] cursor-pointer group overflow-hidden flex items-center justify-center shadow-lg"
+                className="relative aspect-[3/4] border-4 border-black bg-[#e8dfc8] cursor-pointer group overflow-hidden flex items-center justify-center shadow-xl"
               >
                 {pioneerImages.ferez ? (
                   <img src={pioneerImages.ferez} alt="Ferez Gettar" className="w-full h-full object-cover sepia-photo" />
                 ) : (
-                  <div className="text-center p-6">
-                    <span className="text-5xl mb-3 block grayscale opacity-40">🎩</span>
-                    <p className="text-xs font-black uppercase">Añadir Retrato de Ferez Gettar</p>
-                    <div className="mt-4 bg-black text-white px-3 py-1 text-[10px] uppercase font-bold group-hover:bg-gray-800 transition-colors">Seleccionar Archivo</div>
+                  <div className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-[#fdfaf1]">
+                    <TopHatIcon width={60} height={60} className="mb-4 text-gray-500" />
+                    <p className="text-xs font-black uppercase tracking-wide">Fotografía por Revelar</p>
+                    <div className="mt-6 border-2 border-black px-4 py-2 text-[10px] uppercase font-bold group-hover:bg-black group-hover:text-white transition-colors">Seleccionar Retrato</div>
                   </div>
                 )}
                 <input type="file" ref={ferezFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'ferez')} accept="image/*" />
               </div>
-              <div className="text-center">
-                <h4 className="headline-font text-2xl font-black uppercase">Ferez Gettar</h4>
-                <p className="italic font-serif text-sm">"Arquitecto de sueños y pilar de la familia"</p>
+              <div className="text-center border-t-2 border-black pt-4">
+                <h4 className="headline-font text-2xl font-black uppercase mb-1">Ferez Gettar</h4>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-2">El Patriarca</p>
+                <p className="italic font-serif text-sm leading-relaxed">"Arquitecto de sueños y pilar inquebrantable de la familia"</p>
               </div>
             </div>
 
             {/* Ana Frasca */}
             <div className="space-y-4">
-              <div 
+              <div
                 onClick={() => anaFileInputRef.current?.click()}
-                className="relative aspect-[3/4] border-2 border-black bg-[#e8dfc8] cursor-pointer group overflow-hidden flex items-center justify-center shadow-lg"
+                className="relative aspect-[3/4] border-4 border-black bg-[#e8dfc8] cursor-pointer group overflow-hidden flex items-center justify-center shadow-xl"
               >
                 {pioneerImages.ana ? (
                   <img src={pioneerImages.ana} alt="Ana Frasca" className="w-full h-full object-cover sepia-photo" />
                 ) : (
-                  <div className="text-center p-6">
-                    <span className="text-5xl mb-3 block grayscale opacity-40">💐</span>
-                    <p className="text-xs font-black uppercase">Añadir Retrato de Ana Frasca</p>
-                    <div className="mt-4 bg-black text-white px-3 py-1 text-[10px] uppercase font-bold group-hover:bg-gray-800 transition-colors">Seleccionar Archivo</div>
+                  <div className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-[#fdfaf1]">
+                    <FlowerIcon width={60} height={60} className="mb-4 text-gray-500" />
+                    <p className="text-xs font-black uppercase tracking-wide">Fotografía por Revelar</p>
+                    <div className="mt-6 border-2 border-black px-4 py-2 text-[10px] uppercase font-bold group-hover:bg-black group-hover:text-white transition-colors">Seleccionar Retrato</div>
                   </div>
                 )}
                 <input type="file" ref={anaFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'ana')} accept="image/*" />
               </div>
-              <div className="text-center">
-                <h4 className="headline-font text-2xl font-black uppercase">Ana Frasca</h4>
-                <p className="italic font-serif text-sm">"Manantial de ternura y sabiduría eterna"</p>
+              <div className="text-center border-t-2 border-black pt-4">
+                <h4 className="headline-font text-2xl font-black uppercase mb-1">Ana Frasca</h4>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-2">La Matriarca</p>
+                <p className="italic font-serif text-sm leading-relaxed">"Manantial de ternura y sabiduría eterna"</p>
               </div>
             </div>
           </div>
-          
-          <div className="mt-10 text-center max-w-2xl mx-auto font-serif italic text-lg leading-relaxed border-t border-black/20 pt-6">
-            "De tierras lejanas y corazones valientes, Ferez y Ana forjaron el cimiento donde hoy florece nuestra historia. Su ejemplo es la brújula que guía a cada descendiente en este camino de honor y afecto."
+
+          <div className="mt-12 text-center max-w-3xl mx-auto">
+            <div className="border-2 border-black p-6 bg-white/50">
+              <p className="font-serif italic text-base md:text-lg leading-relaxed">
+                "De tierras lejanas y corazones valientes, Ferez y Ana forjaron el cimiento donde hoy florece nuestra historia.
+                Su ejemplo es la brújula que guía a cada descendiente en este camino de honor y afecto."
+              </p>
+              <div className="flex justify-center mt-4">
+                <OrnamentDivider width={150} height={20} className="text-gray-500" />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* SECCIÓN: CRÓNICA DE LAS RAÍCES */}
-        <section className="my-16 py-8 px-6 border-y-4 border-double border-black bg-[#f0e8d0] shadow-inner">
-          <div className="flex flex-col md:flex-row items-center gap-10">
+        {/* SECCIÓN: CRÓNICA DE LAS RAÍCES - HERMANOS */}
+        <section className="my-16 py-10 px-4 md:px-6 border-y-4 border-double border-black bg-[#f0e8d0] shadow-lg">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 max-w-5xl mx-auto">
             <div className="w-full md:w-1/4 flex justify-center">
-              <div className="border-2 border-black p-2 rounded-full">
-                <div className="text-8xl grayscale opacity-50">🌳</div>
+              <div className="border-4 border-black p-4 bg-white/40 shadow-md">
+                <TreeIcon width={100} height={100} className="text-gray-700" />
               </div>
             </div>
-            <div className="flex-1 space-y-4">
-              <h3 className="newspaper-title text-4xl md:text-5xl text-center md:text-left mb-6">Raíces: El Círculo Original</h3>
-              <div className="font-serif text-lg leading-relaxed text-justify space-y-4">
-                <p>
-                  En el solar de los recuerdos, la estirpe se fortalece en el vínculo inquebrantable de los <span className="font-bold">seis hermanos</span>, ramas de un mismo tronco que desafían el tiempo. 
+            <div className="flex-1 space-y-5">
+              <div className="text-center md:text-left">
+                <h3 className="newspaper-title text-3xl md:text-5xl mb-2">Raíces</h3>
+                <p className="headline-font text-xl md:text-2xl uppercase tracking-wide border-b-2 border-black inline-block pb-1">El Círculo Original</p>
+              </div>
+              <div className="font-serif text-base md:text-lg leading-relaxed text-justify space-y-4">
+                <p className="first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left first-letter:leading-none first-letter:mt-1">
+                  En el solar de los recuerdos, la estirpe se fortalece en el vínculo inquebrantable de los <span className="font-bold">seis hermanos</span>, ramas de un mismo tronco que desafían el tiempo.
                 </p>
-                <div className="bg-white/20 p-4 border-l-4 border-black italic">
-                   <p className="mb-2">
-                     Brillan hoy con luz presente <span className="font-bold headline-font text-xl underline">Chacho, Lili y Gringo</span>, quienes junto a nuestra querida cumpleañera <span className="font-bold">Marta Gettar</span>, custodian la risa y el legado de unión familiar.
+                <div className="bg-white/40 p-5 border-l-4 border-black italic shadow-sm">
+                   <p className="mb-3">
+                     Brillan hoy con luz presente <span className="font-bold headline-font text-lg md:text-xl not-italic border-b-2 border-black">Chacho, Lili y Gringo</span>, quienes junto a nuestra querida cumpleañera <span className="font-bold not-italic">Marta Gettar</span>, custodian la risa y el legado de unión familiar.
                    </p>
-                   <p className="mt-4 border-t border-black/20 pt-2 text-gray-700">
-                     Y en el susurro del viento, un recordatorio poético para <span className="headline-font font-bold">Gustavo y Ana María</span>, cuyas almas tejen la red invisible que sostiene nuestra historia y guía nuestros pasos.
-                   </p>
+                   <div className="border-t-2 border-dashed border-black/30 pt-3 mt-3">
+                     <p className="text-gray-700 text-sm">
+                       Y en el susurro del viento, un recordatorio eterno para <span className="headline-font font-bold not-italic text-base">Gustavo y Ana María</span>, cuyas almas tejen la red invisible que sostiene nuestra historia y guía nuestros pasos.
+                     </p>
+                   </div>
                 </div>
-                <p className="text-center md:text-right font-black uppercase text-sm tracking-[0.3em]">Homenaje Permanente</p>
+                <p className="text-center md:text-right font-black uppercase text-xs tracking-[0.4em] border-t border-black pt-3">Homenaje Permanente</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Legacy Section (5 Columns) */}
+        {/* Divider */}
+        <div className="flex justify-center my-10">
+          <OrnamentDivider width={200} height={24} className="text-gray-600" />
+        </div>
+
+        {/* Legacy Section - Hijos y Nietos */}
         <LegacySection />
 
-        {/* Missing Photos Section */}
-        <section className="my-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="border-2 border-dashed border-gray-400 p-8 flex flex-col items-center justify-center text-center opacity-70 group cursor-pointer hover:bg-black/5 transition-colors">
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">📸</div>
-              <h4 className="font-bold uppercase text-sm">Foto por revelar:</h4>
-              <p className="italic font-serif">"El día de su casamiento, San Miguel de Tucumán"</p>
-              <span className="text-[10px] font-black mt-2 hidden group-hover:block">CLIC PARA SUBIR</span>
+        {/* Divider */}
+        <div className="flex justify-center my-10">
+          <OrnamentDivider width={200} height={24} className="text-gray-600" />
+        </div>
+
+        {/* Sección de Sociales - Fotos Adicionales */}
+        <section className="my-16 py-8 px-6 border-4 border-double border-black bg-white/30">
+          <div className="text-center mb-8">
+            <h3 className="headline-font text-3xl font-black uppercase tracking-widest border-b-4 border-black inline-block px-8 pb-2">Sociales</h3>
+            <p className="text-sm italic font-serif mt-2 text-gray-700">Momentos memorables de una vida plena</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {/* Casamiento */}
+            <div
+              onClick={() => weddingFileInputRef.current?.click()}
+              className="border-4 border-black flex flex-col cursor-pointer group bg-[#fdfaf1] shadow-lg"
+            >
+              <div className="aspect-[4/3] border-b-4 border-black bg-[#e8dfc8] overflow-hidden flex items-center justify-center relative">
+                {extraPhotos.wedding ? (
+                  <img src={extraPhotos.wedding} alt="Casamiento" className="w-full h-full object-cover sepia-photo" />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center p-6">
+                    <WeddingRingsIcon width={56} height={56} className="mb-4 text-gray-500 group-hover:scale-110 transition-transform" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <CameraIcon width={40} height={40} className="text-black" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="p-4 text-center bg-white">
+                <h4 className="font-bold uppercase text-sm headline-font mb-1">El Gran Día</h4>
+                <p className="italic font-serif text-xs">Enlace matrimonial en San Miguel de Tucumán</p>
+              </div>
+              <input type="file" ref={weddingFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'wedding')} accept="image/*" />
             </div>
-            <div className="border-2 border-dashed border-gray-400 p-8 flex flex-col items-center justify-center text-center opacity-70 group cursor-pointer hover:bg-black/5 transition-colors">
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">📸</div>
-              <h4 className="font-bold uppercase text-sm">Foto por revelar:</h4>
-              <p className="italic font-serif">"Un viaje inolvidable de la juventud"</p>
-              <span className="text-[10px] font-black mt-2 hidden group-hover:block">CLIC PARA SUBIR</span>
+
+            {/* Viaje */}
+            <div
+              onClick={() => tripFileInputRef.current?.click()}
+              className="border-4 border-black flex flex-col cursor-pointer group bg-[#fdfaf1] shadow-lg"
+            >
+              <div className="aspect-[4/3] border-b-4 border-black bg-[#e8dfc8] overflow-hidden flex items-center justify-center relative">
+                {extraPhotos.trip ? (
+                  <img src={extraPhotos.trip} alt="Viaje" className="w-full h-full object-cover sepia-photo" />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center p-6">
+                    <CompassIcon width={56} height={56} className="mb-4 text-gray-500 group-hover:scale-110 transition-transform" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <CameraIcon width={40} height={40} className="text-black" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="p-4 text-center bg-white">
+                <h4 className="font-bold uppercase text-sm headline-font mb-1">Aventuras</h4>
+                <p className="italic font-serif text-xs">Viajes inolvidables por nuestra tierra</p>
+              </div>
+              <input type="file" ref={tripFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'trip')} accept="image/*" />
             </div>
           </div>
         </section>
 
-        {/* Fe de Erratas */}
-        <div className="max-w-xl mx-auto border border-black p-4 mb-12 text-center bg-gray-50/50 italic shadow-sm">
-          <h5 className="font-bold uppercase text-xs mb-1 underline">Fe de Erratas:</h5>
-          <p className="text-sm font-serif">
-            La redacción se disculpa. En la nota principal subestimamos la cantidad de amor que esta mujer generaría. No son 73 años, son 73 toneladas de cariño.
+        {/* Fe de Erratas - Tono humorístico */}
+        <div className="max-w-2xl mx-auto border-4 border-double border-black p-5 my-12 text-center bg-[#fffcf5] shadow-md">
+          <h5 className="font-bold uppercase text-xs mb-2 border-b-2 border-black pb-1 inline-block">Fe de Erratas</h5>
+          <p className="text-sm font-serif leading-relaxed mt-3">
+            La Redacción se disculpa por el error de cálculo en la nota principal. Subestimamos gravemente la magnitud del amor generado por esta mujer.
+            <span className="font-bold"> No son 73 años, son 73 toneladas de cariño puro</span> derramadas sobre todos nosotros.
           </p>
         </div>
 
-        {/* AI Memory Uploader (The CTA) */}
-        <MemoryUploader />
+        {/* Divider */}
+        <div className="flex justify-center my-10">
+          <OrnamentDivider width={250} height={24} className="text-gray-600" />
+        </div>
+
+        {/* Mensaje Final */}
+        <section className="my-16 p-8 md:p-12 border-8 border-double border-black bg-gradient-to-b from-white/50 to-[#faf7f0] text-center shadow-2xl">
+          <div className="mb-6 flex justify-center">
+            <CakeIcon width={64} height={64} className="text-gray-700" />
+          </div>
+          <h3 className="headline-font text-4xl md:text-5xl font-black uppercase mb-6 tracking-wide">
+            ¡Feliz Cumpleaños, Marta!
+          </h3>
+          <div className="max-w-3xl mx-auto space-y-5">
+            <p className="font-serif italic text-xl md:text-2xl leading-relaxed border-y-2 border-black py-6">
+              De tus hijos, nietos, hermanos y de quienes te precedieron en el cielo:
+              gracias por ser el centro de nuestro universo.
+            </p>
+            <p className="font-serif text-lg leading-relaxed">
+              Que este nuevo año de vida te traiga toda la felicidad que nos has dado multiplicada por mil.
+              Que cada día siga siendo una celebración de tu existencia.
+            </p>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <HeartIcon width={48} height={48} className="text-gray-700" />
+          </div>
+        </section>
 
         {/* Footer */}
-        <footer className="mt-20 pt-8 border-t-2 border-black text-center text-xs uppercase font-bold space-y-2">
-          <p>© 1953 - 2026 EL HERALDO FAMILIAR. TODOS LOS DERECHOS RESERVADOS.</p>
-          <p className="italic tracking-[0.2em] font-serif">"Lo que se escribe en el corazón, nunca se borra de la historia."</p>
+        <footer className="mt-20 pt-10 border-t-4 border-double border-black text-center space-y-4">
+          <div className="flex justify-center mb-4">
+            <OrnamentDivider width={180} height={20} className="text-gray-500" />
+          </div>
+          <p className="text-xs uppercase font-bold tracking-widest">© 1953 - 2026 El Heraldo Familiar</p>
+          <p className="text-[10px] uppercase tracking-wider text-gray-600">San Miguel de Tucumán, República Argentina</p>
+          <p className="text-xs uppercase font-bold">Todos los Derechos Reservados</p>
+          <div className="pt-4 border-t border-gray-400 mt-4">
+            <p className="italic tracking-wide font-serif text-sm">"Lo que se escribe en el corazón, nunca se borra de la historia."</p>
+          </div>
         </footer>
       </div>
     </div>

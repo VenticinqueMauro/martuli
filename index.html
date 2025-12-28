@@ -8,10 +8,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       background-color: #f4ecd8;
       color: #1a1a1a;
-      font-family: 'EB+Garamond', serif;
+      font-family: 'EB Garamond', Georgia, serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
     .newspaper-title {
       font-family: 'UnifrakturMaguntia', cursive;
@@ -20,17 +25,28 @@
       font-family: 'Playfair Display', serif;
     }
     .sepia-photo {
-      filter: sepia(0.8) contrast(1.1) brightness(0.9);
-      border: 1px solid #444;
+      filter: sepia(0.7) contrast(1.05) brightness(0.95);
+      border: 3px solid #2a2a2a;
       padding: 4px;
       background: #fff;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
     }
     .paper-texture {
-      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(139, 115, 85, 0.02) 2px,
+          rgba(139, 115, 85, 0.02) 4px
+        ),
+        linear-gradient(135deg, #f4ecd8 0%, #e8dfc8 50%, #f4ecd8 100%);
+      min-height: 100vh;
     }
     .column-rule {
       border-right: 1px solid #ccc;
     }
+    /* Mejoras para móviles */
     @media (max-width: 768px) {
       .column-rule {
         border-right: none;
@@ -38,20 +54,31 @@
         padding-bottom: 2rem;
         margin-bottom: 2rem;
       }
+      body {
+        font-size: 16px;
+      }
+    }
+    /* Animación sutil para placeholders */
+    .group:hover .transition-transform {
+      transform: scale(1.05);
+    }
+    /* Mejora de legibilidad en textos largos */
+    .font-serif {
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+    /* Estilos para impresión */
+    @media print {
+      body {
+        background: white;
+      }
+      .sepia-photo {
+        filter: none;
+      }
     }
   </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
-  }
-}
-</script>
 </head>
 <body class="paper-texture">
   <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
