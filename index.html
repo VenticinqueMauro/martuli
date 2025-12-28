@@ -6,51 +6,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>El Heraldo de 1953</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'paper': {
+              'base': '#f4ecd8',
+              'light': '#f9f1e0',
+              'medium': '#ede3c8',
+              'dark': '#e4d9bd',
+              'darker': '#d8caad',
+            },
+            'ink': {
+              'black': '#2b2419',
+              'dark': '#3d3328',
+              'medium': '#4a3f32',
+              'light': '#6b5f4f',
+              'lighter': '#8b7d6b',
+            }
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <style>
+    :root {
+      /* Paleta de papel envejecido */
+      --paper-base: #f4ecd8;
+      --paper-light: #f9f1e0;
+      --paper-medium: #ede3c8;
+      --paper-dark: #e4d9bd;
+      --paper-darker: #d8caad;
+
+      /* Paleta de tinta sepia */
+      --ink-black: #2b2419;
+      --ink-dark: #3d3328;
+      --ink-medium: #4a3f32;
+      --ink-light: #6b5f4f;
+      --ink-lighter: #8b7d6b;
+
+      /* Sombras vintage */
+      --shadow-subtle: rgba(43, 36, 25, 0.08);
+      --shadow-medium: rgba(43, 36, 25, 0.12);
+      --shadow-strong: rgba(43, 36, 25, 0.18);
+    }
+
     * {
       box-sizing: border-box;
     }
+
     body {
-      background-color: #f4ecd8;
-      color: #1a1a1a;
+      background: var(--paper-medium);
+      color: var(--ink-black);
       font-family: 'EB Garamond', Georgia, serif;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
+
     .newspaper-title {
       font-family: 'UnifrakturMaguntia', cursive;
     }
+
     .headline-font {
       font-family: 'Playfair Display', serif;
     }
+
     .sepia-photo {
-      filter: sepia(0.7) contrast(1.05) brightness(0.95);
-      border: 3px solid #2a2a2a;
-      padding: 4px;
-      background: #fff;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      filter: sepia(0.8) contrast(1.05) brightness(0.92) saturate(0.9);
+      border: 3px solid var(--ink-dark);
+      padding: 5px;
+      background: var(--paper-light);
+      box-shadow: 3px 3px 10px var(--shadow-medium);
     }
+
     .paper-texture {
       background:
         repeating-linear-gradient(
           0deg,
           transparent,
           transparent 2px,
-          rgba(139, 115, 85, 0.02) 2px,
-          rgba(139, 115, 85, 0.02) 4px
+          var(--shadow-subtle) 2px,
+          var(--shadow-subtle) 4px
         ),
-        linear-gradient(135deg, #f4ecd8 0%, #e8dfc8 50%, #f4ecd8 100%);
+        radial-gradient(ellipse at 20% 30%, rgba(139, 115, 85, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(139, 115, 85, 0.04) 0%, transparent 50%),
+        linear-gradient(135deg, var(--paper-base) 0%, var(--paper-medium) 50%, var(--paper-base) 100%);
       min-height: 100vh;
     }
+
     .column-rule {
-      border-right: 1px solid #ccc;
+      border-right: 1px solid var(--ink-lighter);
     }
+
     /* Mejoras para móviles */
     @media (max-width: 768px) {
       .column-rule {
         border-right: none;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid var(--ink-lighter);
         padding-bottom: 2rem;
         margin-bottom: 2rem;
       }
@@ -58,14 +112,17 @@
         font-size: 16px;
       }
     }
+
     /* Animación sutil para placeholders */
     .group:hover .transition-transform {
       transform: scale(1.05);
     }
+
     /* Mejora de legibilidad en textos largos */
     .font-serif {
       font-family: 'EB Garamond', Georgia, serif;
     }
+
     /* Estilos para impresión */
     @media print {
       body {
