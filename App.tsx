@@ -1,9 +1,10 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import NewspaperHeader from './components/NewspaperHeader';
 import LegacySection from './components/LegacySection';
 import ImageSlider from './components/ImageSlider';
 import Lightbox from './components/Lightbox';
+import { IMAGES } from './config/images';
 import {
   CameraIcon,
   StorkIcon,
@@ -27,37 +28,11 @@ import {
 } from './components/VintageSVGs';
 
 const App: React.FC = () => {
-  const [heroImage, setHeroImage] = useState<string | null>(null);
-  const [pioneerImages, setPioneerImages] = useState<{ ferez: string | null, ana: string | null }>({ ferez: null, ana: null });
-  const [extraPhotos, setExtraPhotos] = useState<{ wedding: string | null, trip: string | null }>({ wedding: null, trip: null });
-
   // Lightbox states
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [lightboxName, setLightboxName] = useState('imagen');
-
-  const heroFileInputRef = useRef<HTMLInputElement>(null);
-  const ferezFileInputRef = useRef<HTMLInputElement>(null);
-  const anaFileInputRef = useRef<HTMLInputElement>(null);
-  const weddingFileInputRef = useRef<HTMLInputElement>(null);
-  const tripFileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, target: 'hero' | 'ferez' | 'ana' | 'wedding' | 'trip') => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const result = event.target?.result as string;
-        if (target === 'hero') setHeroImage(result);
-        if (target === 'ferez') setPioneerImages(prev => ({ ...prev, ferez: result }));
-        if (target === 'ana') setPioneerImages(prev => ({ ...prev, ana: result }));
-        if (target === 'wedding') setExtraPhotos(prev => ({ ...prev, wedding: result }));
-        if (target === 'trip') setExtraPhotos(prev => ({ ...prev, trip: result }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const openLightbox = (images: string[], index: number = 0, name: string = 'imagen') => {
     setLightboxImages(images);
@@ -100,34 +75,22 @@ const App: React.FC = () => {
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-1">
                 <div className="mb-4 relative border-2 border-ink-medium bg-paper-dark group aspect-[4/3] overflow-hidden flex items-center justify-center">
-                  {heroImage ? (
-                    <div
-                      className="relative w-full h-full cursor-pointer"
-                      onClick={() => openLightbox([heroImage], 0, 'foto-principal')}
-                    >
-                      <img src={heroImage} alt="Hero" className="w-full h-full object-cover sepia-photo" />
-                      <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
-                          <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
-                        </div>
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => openLightbox([IMAGES.hero], 0, 'foto-principal')}
+                  >
+                    <img
+                      src={IMAGES.hero}
+                      alt="Hero"
+                      className="w-full h-full object-cover sepia-photo"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
+                        <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
                       </div>
                     </div>
-                  ) : (
-                    <div
-                      onClick={() => heroFileInputRef.current?.click()}
-                      className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-paper-light cursor-pointer"
-                    >
-                      <StorkIcon width={80} height={80} className="mb-4 text-ink-light" />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-ink-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="bg-paper-light/95 p-3 rounded-sm shadow-lg border-2 border-ink-dark mb-2">
-                          <CameraIcon width={32} height={32} className="text-ink-black" />
-                        </div>
-                        <p className="text-[10px] font-black uppercase tracking-wider px-4 text-ink-black bg-paper-light/90 py-1">Haga clic para añadir fotografía</p>
-                      </div>
-                      <div className="mt-2 text-xs font-serif italic text-ink-light border-t border-ink-lighter/60 pt-2">Ilustración de época: La Cigüeña Real</div>
-                    </div>
-                  )}
-                  <input type="file" ref={heroFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'hero')} accept="image/*" />
+                  </div>
                 </div>
                 <p className="text-[10px] italic font-serif text-center border-b border-ink-dark/20 pb-2">
                   Imagen de archivo: El inicio de un camino de amor que hoy cumple 73 años.
@@ -217,29 +180,22 @@ const App: React.FC = () => {
             {/* Ferez Gettar */}
             <div className="space-y-4">
               <div className="relative aspect-[3/4] border-4 border-ink-dark bg-paper-dark group overflow-hidden flex items-center justify-center shadow-xl">
-                {pioneerImages.ferez ? (
-                  <div
-                    className="relative w-full h-full cursor-pointer"
-                    onClick={() => openLightbox([pioneerImages.ferez], 0, 'ferez-gettar')}
-                  >
-                    <img src={pioneerImages.ferez} alt="Ferez Gettar" className="w-full h-full object-cover sepia-photo" />
-                    <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
-                        <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
-                      </div>
+                <div
+                  className="relative w-full h-full cursor-pointer"
+                  onClick={() => openLightbox([IMAGES.pioneers.ferez], 0, 'ferez-gettar')}
+                >
+                  <img
+                    src={IMAGES.pioneers.ferez}
+                    alt="Ferez Gettar"
+                    className="w-full h-full object-cover sepia-photo"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
+                      <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
                     </div>
                   </div>
-                ) : (
-                  <div
-                    onClick={() => ferezFileInputRef.current?.click()}
-                    className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-paper-light cursor-pointer"
-                  >
-                    <TopHatIcon width={60} height={60} className="mb-4 text-ink-light" />
-                    <p className="text-xs font-black uppercase tracking-wide">Fotografía por Revelar</p>
-                    <div className="mt-6 border-2 border-ink-dark px-4 py-2 text-[10px] uppercase font-bold group-hover:bg-ink-black group-hover:text-paper-light transition-colors">Seleccionar Retrato</div>
-                  </div>
-                )}
-                <input type="file" ref={ferezFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'ferez')} accept="image/*" />
+                </div>
               </div>
               <div className="text-center border-t-2 border-ink-dark pt-4">
                 <h4 className="headline-font text-2xl font-black uppercase mb-1">Ferez Gettar</h4>
@@ -250,29 +206,22 @@ const App: React.FC = () => {
             {/* Ana Frasca */}
             <div className="space-y-4">
               <div className="relative aspect-[3/4] border-4 border-ink-dark bg-paper-dark group overflow-hidden flex items-center justify-center shadow-xl">
-                {pioneerImages.ana ? (
-                  <div
-                    className="relative w-full h-full cursor-pointer"
-                    onClick={() => openLightbox([pioneerImages.ana], 0, 'ana-frasca')}
-                  >
-                    <img src={pioneerImages.ana} alt="Ana Frasca" className="w-full h-full object-cover sepia-photo" />
-                    <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
-                        <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
-                      </div>
+                <div
+                  className="relative w-full h-full cursor-pointer"
+                  onClick={() => openLightbox([IMAGES.pioneers.ana], 0, 'ana-frasca')}
+                >
+                  <img
+                    src={IMAGES.pioneers.ana}
+                    alt="Ana Frasca"
+                    className="w-full h-full object-cover sepia-photo"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-4 py-2 border-2 border-ink-dark">
+                      <p className="text-xs font-black uppercase tracking-wider">Click para ampliar</p>
                     </div>
                   </div>
-                ) : (
-                  <div
-                    onClick={() => anaFileInputRef.current?.click()}
-                    className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-paper-light cursor-pointer"
-                  >
-                    <FlowerIcon width={60} height={60} className="mb-4 text-ink-light" />
-                    <p className="text-xs font-black uppercase tracking-wide">Fotografía por Revelar</p>
-                    <div className="mt-6 border-2 border-ink-dark px-4 py-2 text-[10px] uppercase font-bold group-hover:bg-ink-black group-hover:text-paper-light transition-colors">Seleccionar Retrato</div>
-                  </div>
-                )}
-                <input type="file" ref={anaFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'ana')} accept="image/*" />
+                </div>
               </div>
               <div className="text-center border-t-2 border-ink-dark pt-4">
                 <h4 className="headline-font text-2xl font-black uppercase mb-1">Ana Frasca</h4>
@@ -333,7 +282,10 @@ const App: React.FC = () => {
         </div>
 
         {/* Legacy Section - Hijos y Nietos */}
-        <LegacySection onImageClick={(image, name) => openLightbox([image], 0, name)} />
+        <LegacySection
+          familyImages={IMAGES.family}
+          onImageClick={(image, name) => openLightbox([image], 0, name)}
+        />
 
         {/* Divider */}
         <div className="flex justify-center my-10">
@@ -697,6 +649,7 @@ const App: React.FC = () => {
             <ImageSlider
               title="Álbum de Recuerdos"
               subtitle="73 años de momentos inolvidables"
+              images={IMAGES.gallery}
               onImageClick={(images, index) => openLightbox(images, index, 'album-recuerdos')}
             />
           </div>

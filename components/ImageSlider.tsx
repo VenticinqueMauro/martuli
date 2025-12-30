@@ -1,44 +1,20 @@
-import React, { useState, useRef } from 'react';
-import { ArrowLeftIcon, ArrowRightIcon, CameraIcon, PlusIcon } from './VintageSVGs';
+import React, { useState } from 'react';
+import { ArrowLeftIcon, ArrowRightIcon, CameraIcon } from './VintageSVGs';
 
 interface ImageSliderProps {
   title?: string;
   subtitle?: string;
+  images: string[];
   onImageClick?: (images: string[], index: number) => void;
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({
   title = "Galería de Recuerdos",
   subtitle = "Momentos inmortalizados para la posteridad",
+  images,
   onImageClick
 }) => {
-  const [images, setImages] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      const newImages: string[] = [];
-      const fileArray = Array.from(files);
-
-      let processed = 0;
-      fileArray.forEach((file: File) => {
-        const reader = new FileReader();
-        reader.onload = (event: ProgressEvent<FileReader>) => {
-          if (event.target?.result && typeof event.target.result === 'string') {
-            newImages.push(event.target.result);
-            processed++;
-
-            if (processed === fileArray.length) {
-              setImages(prev => [...prev, ...newImages]);
-            }
-          }
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-  };
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % Math.max(images.length, 1));
@@ -77,6 +53,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                   src={images[currentIndex]}
                   alt={`Recuerdo ${currentIndex + 1}`}
                   className="w-full h-full object-contain sepia-photo"
+                  loading="lazy"
                 />
                 {onImageClick && (
                   <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
@@ -117,19 +94,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center">
               <CameraIcon width={80} height={80} className="mb-6 text-ink-light" />
               <p className="headline-font text-xl md:text-2xl font-bold uppercase mb-3 text-ink-black">
-                Galería Vacía
+                Galería en Preparación
               </p>
-              <p className="font-serif italic text-sm text-ink-medium mb-6 max-w-md">
+              <p className="font-serif italic text-sm text-ink-medium max-w-md">
                 "Las fotografías son el testimonio silencioso de los momentos que nunca volverán,
                 pero que siempre recordaremos."
               </p>
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="border-3 border-ink-dark bg-paper-medium px-6 py-3 hover:bg-paper-dark transition-colors shadow-md flex items-center gap-2 group"
-              >
-                <PlusIcon width={20} height={20} className="text-ink-black group-hover:scale-110 transition-transform" />
-                <span className="font-bold uppercase text-sm tracking-wide">Añadir Fotografías</span>
-              </button>
             </div>
           )}
         </div>
@@ -150,37 +120,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                   aria-label={`Ir a imagen ${index + 1}`}
                 />
               ))}
-
-              {/* Add More Button */}
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="ml-4 border-2 border-ink-dark bg-paper-light px-3 py-1 hover:bg-paper-dark transition-colors text-xs uppercase font-bold tracking-wide flex items-center gap-1"
-              >
-                <PlusIcon width={14} height={14} className="text-ink-black" />
-                <span>Añadir más</span>
-              </button>
             </div>
           </div>
         )}
-
-        {/* Hidden File Input */}
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*"
-          multiple
-          onChange={handleImageUpload}
-          className="hidden"
-        />
       </div>
 
       {/* Caption/Description */}
-      <div className="mt-4 text-center border-t-2 border-ink-lighter pt-3">
-        <p className="text-xs italic font-serif text-ink-medium">
-          Haga clic en el botón para agregar fotografías de la familia.
-          Se pueden seleccionar múltiples imágenes a la vez.
-        </p>
-      </div>
+      {images.length > 0 && (
+        <div className="mt-4 text-center border-t-2 border-ink-lighter pt-3">
+          <p className="text-xs italic font-serif text-ink-medium">
+            Colección de momentos familiares preservados para la eternidad.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

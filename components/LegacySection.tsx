@@ -1,17 +1,13 @@
-
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { LegacyItem } from '../types';
 import { CameraIcon } from './VintageSVGs';
 
 interface LegacySectionProps {
+  familyImages: string[];
   onImageClick?: (image: string, name: string) => void;
 }
 
-const LegacySection: React.FC<LegacySectionProps> = ({ onImageClick }) => {
-  const [images, setImages] = useState<Record<number, string>>({});
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
-
+const LegacySection: React.FC<LegacySectionProps> = ({ familyImages, onImageClick }) => {
   const family: LegacyItem[] = [
     { name: "VERÓNICA", role: "La Primogénita", description: "" },
     { name: "MAURO", role: "El Hijo", description: "" },
@@ -19,22 +15,6 @@ const LegacySection: React.FC<LegacySectionProps> = ({ onImageClick }) => {
     { name: "GINO", role: "Primer Nieto", description: "" },
     { name: "MIA", role: "La Pequeña", description: "" }
   ];
-
-  const handleUpload = (idx: number) => {
-    setActiveIdx(idx);
-    fileInputRef.current?.click();
-  };
-
-  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file && activeIdx !== null) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setImages(prev => ({ ...prev, [activeIdx]: event.target?.result as string }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   return (
     <section className="my-16 py-10 px-4 border-y-4 border-double border-ink-dark bg-paper-medium/30">
@@ -47,12 +27,17 @@ const LegacySection: React.FC<LegacySectionProps> = ({ onImageClick }) => {
         {family.map((item, idx) => (
           <div key={idx} className="flex flex-col">
             <div className="relative w-full aspect-[3/4] border-4 border-ink-dark bg-paper-dark group overflow-hidden mb-4 shadow-md">
-              {images[idx] ? (
+              {familyImages[idx] ? (
                 <div
                   className="relative w-full h-full cursor-pointer"
-                  onClick={() => onImageClick?.(images[idx], item.name.toLowerCase())}
+                  onClick={() => onImageClick?.(familyImages[idx], item.name.toLowerCase())}
                 >
-                  <img src={images[idx]} className="w-full h-full object-cover sepia-photo" alt={item.name} />
+                  <img
+                    src={familyImages[idx]}
+                    className="w-full h-full object-cover sepia-photo"
+                    alt={item.name}
+                    loading="lazy"
+                  />
                   {onImageClick && (
                     <div className="absolute inset-0 bg-ink-black/0 group-hover:bg-ink-black/10 transition-colors flex items-center justify-center">
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-paper-light/95 px-2 py-1 border-2 border-ink-dark">
@@ -62,15 +47,9 @@ const LegacySection: React.FC<LegacySectionProps> = ({ onImageClick }) => {
                   )}
                 </div>
               ) : (
-                <div
-                  onClick={() => handleUpload(idx)}
-                  className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-paper-light cursor-pointer hover:bg-ink-black/5 transition-all"
-                >
-                  <CameraIcon width={40} height={40} className="mb-2 text-ink-light group-hover:scale-110 transition-transform" />
-                  <p className="text-[9px] font-bold uppercase leading-tight tracking-wide">Retrato<br />Familiar</p>
-                  <div className="absolute bottom-0 left-0 right-0 bg-ink-black text-white text-[8px] py-1.5 text-center opacity-0 group-hover:opacity-100 transition-opacity uppercase font-bold tracking-wide">
-                    Añadir Foto
-                  </div>
+                <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-paper-light">
+                  <CameraIcon width={40} height={40} className="mb-2 text-ink-light" />
+                  <p className="text-[9px] font-bold uppercase leading-tight tracking-wide text-ink-medium">Retrato<br />Pendiente</p>
                 </div>
               )}
             </div>
@@ -84,7 +63,6 @@ const LegacySection: React.FC<LegacySectionProps> = ({ onImageClick }) => {
           </div>
         ))}
       </div>
-      <input type="file" ref={fileInputRef} className="hidden" onChange={onFileChange} accept="image/*" />
     </section>
   );
 };
