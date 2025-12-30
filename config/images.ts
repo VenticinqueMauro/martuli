@@ -3,7 +3,7 @@
 
 export const IMAGES = {
   // Imagen principal/hero
-  hero: '/images/hero/main.jpg',
+  hero: '/images/hero/main.png',
 
   // Pioneros (abuelos)
   pioneers: {
@@ -20,7 +20,7 @@ export const IMAGES = {
     '/images/family/mia.jpg',
   ],
 
-  // Galería de recuerdos (slider principal) - 63 imágenes
+  // Galería de recuerdos (slider principal) - 69 imágenes
   gallery: [
     '/images/gallery/20210101_001733.jpg',
     '/images/gallery/20210724_153928.jpg',
@@ -80,6 +80,12 @@ export const IMAGES = {
     '/images/gallery/WhatsApp Image 2025-12-28 at 09.45.12 (1).jpeg',
     '/images/gallery/WhatsApp Image 2025-12-28 at 09.45.12.jpeg',
     '/images/gallery/WhatsApp Image 2025-12-28 at 09.50.21.jpeg',
+    '/images/gallery/WhatsApp Image 2025-12-28 at 21.04.59.jpeg',
+    '/images/gallery/WhatsApp Image 2025-12-28 at 21.07.22.jpeg',
+    '/images/gallery/WhatsApp Image 2025-12-28 at 21.10.39.jpeg',
+    '/images/gallery/WhatsApp Image 2025-12-28 at 21.18.18.jpeg',
+    '/images/gallery/WhatsApp Image 2025-12-28 at 21.21.24.jpeg',
+    '/images/gallery/WhatsApp Image 2025-12-28 at 21.29.23.jpeg',
     '/images/gallery/WhatsApp Image 2025-12-29 at 20.21.17.jpeg',
     '/images/gallery/WhatsApp Image 2025-12-29 at 20.21.33.jpeg',
     '/images/gallery/WhatsApp Image 2025-12-29 at 20.27.51.jpeg',
