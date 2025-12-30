@@ -3,7 +3,7 @@
 
 export const IMAGES = {
   // Imagen principal/hero
-  hero: '/images/hero/main.webp',
+  hero: '/images/hero/main.png',
 
   // Pioneros (abuelos)
   pioneers: {
