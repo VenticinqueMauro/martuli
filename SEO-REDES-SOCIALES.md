@@ -24,16 +24,16 @@ El sitio ya incluye todos los meta tags necesarios en `index.html`:
 Cuando compartas el link en WhatsApp o redes sociales, se mostrará:
 
 ### Título
-> Feliz Cumpleaños Martuli - 73 Años de Amor Incondicional
+> Feliz Cumpleaños Martuli - 74 Años de Amor Incondicional
 
 ### Descripción
 > Una celebración especial para Marta E Gettar. Periódico digital vintage con historias familiares, fotografías memorables y el cariño de toda la familia. ¡Descubre los super poderes de la abuela más increíble!
 
 ### Imagen
 Una vista previa con:
-- "El Heraldo de 1953" en tipografía gótica
+- "Martuli" en tipografía gótica
 - "Feliz Cumple MARTULI" en grandes titulares
-- "73 años de amor incondicional"
+- "74 años de amor incondicional"
 - Diseño de periódico vintage con bordes ornamentados
 
 ## 🎨 Generar la Imagen Open Graph
@@ -166,7 +166,7 @@ Puedes agregar un botón "Compartir en WhatsApp" en la página:
 ### Facebook
 - Muestra: Imagen grande + Título + Descripción
 - Formato: Link preview enriquecido
-- Incluye: Nombre del sitio ("El Heraldo de 1953")
+- Incluye: Nombre del sitio ("Martuli")
 
 ### Twitter
 - Muestra: Twitter Card con imagen grande
@@ -235,7 +235,7 @@ que preparamos con todo nuestro cariño ❤️
 
 👉 [TU LINK AQUÍ]
 
-¡73 años de amor incondicional! 🎉
+¡74 años de amor incondicional! 🎉
 ```
 
 ### Acortar el link (opcional)

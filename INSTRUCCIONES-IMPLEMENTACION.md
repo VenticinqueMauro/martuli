@@ -94,7 +94,7 @@ Para Ana:
 ```tsx
 <ImageSlider
   title="Álbum de Recuerdos"
-  subtitle="73 años de momentos inolvidables"
+  subtitle="74 años de momentos inolvidables"
   images={IMAGES.gallery}
   onImageClick={(images, index) => openLightbox(images, index, 'album-recuerdos')}
 />

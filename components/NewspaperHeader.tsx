@@ -20,7 +20,7 @@ const NewspaperHeader: React.FC = () => {
 
       <div className="flex justify-between items-start text-xs md:text-sm font-bold italic">
         <span>"Veritas in Caritate"</span>
-        <span className="font-bold not-italic uppercase tracking-tighter">Jueves, 1 de Enero de 1953</span>
+        <span className="font-bold not-italic uppercase tracking-tighter">Jueves, 1 de Enero de 1952</span>
         <span>Última Edición</span>
       </div>
     </header>

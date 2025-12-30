@@ -44,7 +44,7 @@ const App: React.FC = () => {
     }
   };
 
-  const articleContent = `n un caluroso día de enero de 1953, mientras el mundo celebraba el comienzo de un nuevo año, San Miguel de Tucumán recibía a quien se convertiría en el corazón de nuestra familia. Marta llegó a este mundo trayendo consigo la promesa de amor incondicional que hoy, setenta y tres años después, sigue cumpliendo con creces. Cada arruga es un mapa de risas compartidas, cada cana un testimonio de sabiduría acumulada. Hoy, toda la Argentina se detiene para celebrar a esta mujer extraordinaria.`;
+  const articleContent = `n un caluroso día de enero de 1952, mientras el mundo celebraba el comienzo de un nuevo año, San Miguel de Tucumán recibía a quien se convertiría en el corazón de nuestra familia. Marta llegó a este mundo trayendo consigo la promesa de amor incondicional que hoy, setenta y tres años después, sigue cumpliendo con creces. Cada arruga es un mapa de risas compartidas, cada cana un testimonio de sabiduría acumulada. Hoy, toda la Argentina se detiene para celebrar a esta mujer extraordinaria.`;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 bg-white/40 shadow-2xl my-4 md:my-10 border border-gray-300 relative paper-texture">
@@ -94,7 +94,7 @@ const App: React.FC = () => {
                   <input type="file" ref={heroFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'hero')} accept="image/*" />
                 </div>
                 <p className="text-[10px] italic font-serif text-center border-b border-black/20 pb-2">
-                  Imagen de archivo: El inicio de un camino de amor que hoy cumple 73 años.
+                  Imagen de archivo: El inicio de un camino de amor que hoy cumple 74 años.
                 </p>
               </div>
 
@@ -141,7 +141,7 @@ const App: React.FC = () => {
               <ul className="text-sm space-y-2.5 font-serif">
                 <li className="border-l-2 border-black pl-2">
                   <span className="font-bold uppercase text-[10px] tracking-wider">Fecha:</span><br/>
-                  <span className="italic">1° de Enero de 1953</span>
+                  <span className="italic">1° de Enero de 1952</span>
                 </li>
                 <li className="border-l-2 border-black pl-2">
                   <span className="font-bold uppercase text-[10px] tracking-wider">Clima:</span><br/>
@@ -357,7 +357,7 @@ const App: React.FC = () => {
           <h5 className="font-bold uppercase text-xs mb-2 border-b-2 border-black pb-1 inline-block">Fe de Erratas</h5>
           <p className="text-sm font-serif leading-relaxed mt-3">
             La Redacción se disculpa por el error de cálculo en la nota principal. Subestimamos gravemente la magnitud del amor generado por esta mujer.
-            <span className="font-bold"> No son 73 años, son 73 toneladas de cariño puro</span> derramadas sobre todos nosotros.
+            <span className="font-bold"> No son 74 años, son 74 toneladas de cariño puro</span> derramadas sobre todos nosotros.
           </p>
         </div>
 
@@ -394,7 +394,7 @@ const App: React.FC = () => {
           <div className="flex justify-center mb-4">
             <OrnamentDivider width={180} height={20} className="text-gray-500" />
           </div>
-          <p className="text-xs uppercase font-bold tracking-widest">© 1953 - 2026 The Martuli Times</p>
+          <p className="text-xs uppercase font-bold tracking-widest">© 1952 - 2026 The Martuli Times</p>
           <p className="text-[10px] uppercase tracking-wider text-gray-600">San Miguel de Tucumán, República Argentina</p>
           <p className="text-xs uppercase font-bold">Todos los Derechos Reservados</p>
           <div className="pt-4 border-t border-gray-400 mt-4">
