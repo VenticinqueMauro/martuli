@@ -3,7 +3,7 @@
 
 export const IMAGES = {
   // Imagen principal/hero
-  hero: '/images/hero/main.png',
+  hero: '/images/hero/main.webp',
 
   // Pioneros (abuelos)
   pioneers: {
@@ -22,7 +22,7 @@ export const IMAGES = {
 
   // Galería de recuerdos (slider principal) - 69 imágenes
   gallery: [
-    '/images/gallery/20210101_001743.jpg',
+    '/images/gallery/20210101_001733.jpg',
     '/images/gallery/20210724_153928.jpg',
     '/images/gallery/20210724_153933.jpg',
     '/images/gallery/20210724_153938.jpg',
