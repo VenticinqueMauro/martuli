@@ -19,23 +19,23 @@ import {
 
 const App: React.FC = () => {
   const [heroImage, setHeroImage] = useState<string | null>(null);
-  const [pioneerImages, setPioneerImages] = useState<{ferez: string | null, ana: string | null}>({ferez: null, ana: null});
+  const [pioneerImages, setPioneerImages] = useState<{Feres: string | null, ana: string | null}>({Feres: null, ana: null});
   const [extraPhotos, setExtraPhotos] = useState<{wedding: string | null, trip: string | null}>({wedding: null, trip: null});
 
   const heroFileInputRef = useRef<HTMLInputElement>(null);
-  const ferezFileInputRef = useRef<HTMLInputElement>(null);
+  const FeresFileInputRef = useRef<HTMLInputElement>(null);
   const anaFileInputRef = useRef<HTMLInputElement>(null);
   const weddingFileInputRef = useRef<HTMLInputElement>(null);
   const tripFileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, target: 'hero' | 'ferez' | 'ana' | 'wedding' | 'trip') => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, target: 'hero' | 'Feres' | 'ana' | 'wedding' | 'trip') => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
         const result = event.target?.result as string;
         if (target === 'hero') setHeroImage(result);
-        if (target === 'ferez') setPioneerImages(prev => ({...prev, ferez: result}));
+        if (target === 'Feres') setPioneerImages(prev => ({...prev, Feres: result}));
         if (target === 'ana') setPioneerImages(prev => ({...prev, ana: result}));
         if (target === 'wedding') setExtraPhotos(prev => ({...prev, wedding: result}));
         if (target === 'trip') setExtraPhotos(prev => ({...prev, trip: result}));
@@ -182,14 +182,14 @@ const App: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start max-w-4xl mx-auto">
-            {/* Ferez Gettar */}
+            {/* Feres Gettar */}
             <div className="space-y-4">
               <div
-                onClick={() => ferezFileInputRef.current?.click()}
+                onClick={() => FeresFileInputRef.current?.click()}
                 className="relative aspect-[3/4] border-4 border-black bg-[#e8dfc8] cursor-pointer group overflow-hidden flex items-center justify-center shadow-xl"
               >
-                {pioneerImages.ferez ? (
-                  <img src={pioneerImages.ferez} alt="Ferez Gettar" className="w-full h-full object-cover sepia-photo" />
+                {pioneerImages.Feres ? (
+                  <img src={pioneerImages.Feres} alt="Feres Gettar" className="w-full h-full object-cover sepia-photo" />
                 ) : (
                   <div className="text-center p-6 w-full h-full flex flex-col items-center justify-center bg-[#fdfaf1]">
                     <TopHatIcon width={60} height={60} className="mb-4 text-gray-500" />
@@ -197,10 +197,10 @@ const App: React.FC = () => {
                     <div className="mt-6 border-2 border-black px-4 py-2 text-[10px] uppercase font-bold group-hover:bg-black group-hover:text-white transition-colors">Seleccionar Retrato</div>
                   </div>
                 )}
-                <input type="file" ref={ferezFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'ferez')} accept="image/*" />
+                <input type="file" ref={FeresFileInputRef} className="hidden" onChange={(e) => handleImageChange(e, 'Feres')} accept="image/*" />
               </div>
               <div className="text-center border-t-2 border-black pt-4">
-                <h4 className="headline-font text-2xl font-black uppercase mb-1">Ferez Gettar</h4>
+                <h4 className="headline-font text-2xl font-black uppercase mb-1">Feres Gettar</h4>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-2">El Patriarca</p>
                 <p className="italic font-serif text-sm leading-relaxed">"Arquitecto de sueños y pilar inquebrantable de la familia"</p>
               </div>
@@ -234,7 +234,7 @@ const App: React.FC = () => {
           <div className="mt-12 text-center max-w-3xl mx-auto">
             <div className="border-2 border-black p-6 bg-white/50">
               <p className="font-serif italic text-base md:text-lg leading-relaxed">
-                "De tierras lejanas y corazones valientes, Ferez y Ana forjaron el cimiento donde hoy florece nuestra historia.
+                "De tierras lejanas y corazones valientes, Feres y Ana forjaron el cimiento donde hoy florece nuestra historia.
                 Su ejemplo es la brújula que guía a cada descendiente en este camino de honor y afecto."
               </p>
               <div className="flex justify-center mt-4">

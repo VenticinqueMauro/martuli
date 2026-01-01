@@ -3,7 +3,7 @@
 ## Estado Actual
 
 ✅ Imágenes copiadas a `public/images/`:
-- **Pioneros**: ferez.png, ana.png
+- **Pioneros**: Feres.png, ana.png
 - **Familia**: veronica.jpeg, mauro.jpg, camila.jpeg, gino.jpg, mia.jpg
 - **Galería**: 63 imágenes
 
@@ -34,7 +34,7 @@ Elimina completamente:
 - `const [heroImage, setHeroImage] = useState...`
 - `const [pioneerImages, setPioneerImages] = useState...`
 - `const [extraPhotos, setExtraPhotos] = useState...`
-- Todos los `useRef` (heroFileInputRef, ferezFileInputRef, etc.)
+- Todos los `useRef` (heroFileInputRef, FeresFileInputRef, etc.)
 - La función `handleImageChange`
 
 ### 3. Hero Image (alrededor de línea 100-130)
@@ -62,11 +62,11 @@ Reemplaza toda la sección de hero image con:
 ```
 
 ### 4. Pioneer Images (alrededor de línea 210-280)
-Para Ferez:
+Para Feres:
 ```tsx
 <img
-  src={IMAGES.pioneers.ferez}
-  alt="Ferez Gettar"
+  src={IMAGES.pioneers.Feres}
+  alt="Feres Gettar"
   className="w-full h-full object-cover sepia-photo"
   loading="lazy"
 />

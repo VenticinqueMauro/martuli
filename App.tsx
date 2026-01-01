@@ -177,16 +177,16 @@ const App: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start max-w-4xl mx-auto">
-            {/* Ferez Gettar */}
+            {/* Feres Gettar */}
             <div className="space-y-4">
               <div className="relative aspect-[3/4] border-4 border-ink-dark bg-paper-dark group overflow-hidden flex items-center justify-center shadow-xl">
                 <div
                   className="relative w-full h-full cursor-pointer"
-                  onClick={() => openLightbox([IMAGES.pioneers.ferez], 0, 'ferez-gettar')}
+                  onClick={() => openLightbox([IMAGES.pioneers.Feres], 0, 'Feres-gettar')}
                 >
                   <img
-                    src={IMAGES.pioneers.ferez}
-                    alt="Ferez Gettar"
+                    src={IMAGES.pioneers.Feres}
+                    alt="Feres Gettar"
                     className="w-full h-full object-cover sepia-photo"
                     loading="lazy"
                   />
@@ -198,7 +198,7 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="text-center border-t-2 border-ink-dark pt-4">
-                <h4 className="headline-font text-2xl font-black uppercase mb-1">Ferez Gettar</h4>
+                <h4 className="headline-font text-2xl font-black uppercase mb-1">Feres Gettar</h4>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-ink-light mb-2">El Patriarca</p>
               </div>
             </div>
@@ -233,7 +233,7 @@ const App: React.FC = () => {
           <div className="mt-12 text-center max-w-3xl mx-auto">
             <div className="border-2 border-ink-dark p-6 bg-paper-light/60">
               <p className="font-serif italic text-base md:text-lg leading-relaxed">
-                "De tierras lejanas y corazones valientes, Ferez y Ana forjaron el cimiento donde hoy florece nuestra historia.
+                "De tierras lejanas y corazones valientes, Feres y Ana forjaron el cimiento donde hoy florece nuestra historia.
                 Su ejemplo es la brújula que guía a cada descendiente en este camino de honor y afecto."
               </p>
               <div className="flex justify-center mt-4">

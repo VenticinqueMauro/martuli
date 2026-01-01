@@ -17,7 +17,7 @@ public/images/
 ├── hero/
 │   └── main.jpg (1 imagen)
 ├── pioneers/
-│   ├── ferez.png
+│   ├── Feres.png
 │   └── ana.png (2 imágenes)
 ├── family/
 │   ├── veronica.jpeg

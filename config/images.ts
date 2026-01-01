@@ -7,7 +7,7 @@ export const IMAGES = {
 
   // Pioneros (abuelos)
   pioneers: {
-    ferez: '/images/pioneers/ferez.png',
+    Feres: '/images/pioneers/Feres.png',
     ana: '/images/pioneers/ana.png',
   },
 
